@@ -1,5 +1,6 @@
 package com.seleniumsimplified.todomvc.domainbased;
 
+import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.domain.objects.ToDoItem;
 import com.seleniumsimplified.todomvc.domain.objects.ToDoList;
 import com.seleniumsimplified.todomvc.domain.actors.TodoMVCUser;
@@ -30,7 +31,7 @@ public class DomainBasedTest {
 
     @Before
     public void setup(){
-        driver = new FirefoxDriver();
+        driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
         //todoMVC = new ApplicationPage(driver, todoMVCSite);

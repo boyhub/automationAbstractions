@@ -2,6 +2,7 @@ package com.seleniumsimplified.todomvc;
 
 
 import com.seleniumsimplified.selenium.support.html5.Storage;
+import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.localstorage.TodoMvcLocalStorage;
 import com.seleniumsimplified.todomvc.page.pojo.ApplicationPage;
 import com.seleniumsimplified.todomvc.site.TodoMVCSite;
@@ -26,7 +27,7 @@ public class LocalStorageTest {
 
     @Before
     public void setup(){
-        driver = new FirefoxDriver();
+        driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
         todoMVC = new ApplicationPage(driver, todoMVCSite);

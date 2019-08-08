@@ -96,15 +96,40 @@ public class ApplicationPage {
         WebElement todoListItem = items.get(items.size()-1);
         wait.until(ExpectedConditions.elementToBeClickable(todoListItem));
 
+        // find the label
         // have no choice but to use actions here
-        new Actions(driver).doubleClick(todoListItem.findElement(By.cssSelector("div > label"))).perform();
+        final WebElement fieldLabel = todoListItem.findElement(By.cssSelector("div > label"));
+
+        String textToEdit = fieldLabel.getText();
+
+        // double click to edit and reveal the input field
+        new Actions(driver).doubleClick(fieldLabel).perform();
 
         WebElement editfield = todoListItem.findElement(By.cssSelector("input.edit"));
         wait.until(ExpectedConditions.elementToBeClickable(editfield));
         editfield.click();
-        editfield.clear();
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
+
+        // clearing the field causes the entire field to disappear again
+        // and then we have a stale element exception when we send keys
+        // does field lose control?
+        // Note: this used to work - did GUI change? or did webdriver change?
+        // editfield.clear();
+        // editfield.sendKeys(editTheTitleTo);
+        // editfield.sendKeys(Keys.ENTER);
+
+        // OPTION: could find the length of the text and issue that many backspace
+        StringBuilder seq = new StringBuilder();
+        for(int backspaceToAdd = 0; backspaceToAdd<textToEdit.length(); backspaceToAdd++){
+            seq.append(Keys.BACK_SPACE);
+        }
+        seq.append(editTheTitleTo);
+        seq.append(Keys.ENTER);
+        editfield.sendKeys(seq.toString());
+
+        // OPTION: could use actions to do the same thing? which might simulate human more
+        // OPTION: could use JavaScript to change the values of the field?
+        // OPTION: is there a way to retain focus between clear and sendKeys?
+
     }
 
 
@@ -164,20 +189,29 @@ public class ApplicationPage {
     }
 
     public Integer getClearCompletedCount() {
-        Integer clearCompletedCount=0;
 
-        if(isClearCompletedVisible()){
-            WebElement clearCompletedButton = driver.findElement(By.className("clear-completed"));
-            String clearCompletedText = clearCompletedButton.getText();
-            Pattern completedText = Pattern.compile("Clear completed \\((.+)\\)");
-            Matcher matcher = completedText.matcher(clearCompletedText);
+        // the clear completed button used to show the count in the button test
 
-            if(matcher.matches()){
-                return Integer.valueOf(matcher.group(1));
-            }
-        }
+//        Integer clearCompletedCount=0;
+//
+//        if(isClearCompletedVisible()){
+//            WebElement clearCompletedButton = driver.findElement(By.className("clear-completed"));
+//            String clearCompletedText = clearCompletedButton.getText();
+//            Pattern completedText = Pattern.compile("Clear completed \\((.+)\\)");
+//            Matcher matcher = completedText.matcher(clearCompletedText);
+//
+//            if(matcher.matches()){
+//                return Integer.valueOf(matcher.group(1));
+//            }
+//        }
+//
+//        return clearCompletedCount;
 
-        return clearCompletedCount;
+        // the button no longer shows the completed count so count the list items
+        // ul.todo-list li.completed
+        return driver.findElements(By.cssSelector("ul.todo-list li.completed")).size();
+
+
     }
 
     public void clearCompleted() {

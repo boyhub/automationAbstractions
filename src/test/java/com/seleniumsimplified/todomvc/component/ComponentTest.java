@@ -1,5 +1,6 @@
 package com.seleniumsimplified.todomvc.component;
 
+import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
 import com.seleniumsimplified.todomvc.site.TodoMVCSite;
 import org.junit.After;
@@ -21,7 +22,7 @@ public class ComponentTest {
 
     @Before
     public void setup(){
-        driver = new FirefoxDriver();
+        driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
         todoMVC = new ApplicationPageFunctional(driver, todoMVCSite);

@@ -1,5 +1,6 @@
 package com.seleniumsimplified.todomvc.cucumberjvm;
 
+import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.domain.actors.TodoMVCUser;
 import com.seleniumsimplified.todomvc.site.TodoMVCSite;
 import cucumber.api.java.After;
@@ -21,7 +22,7 @@ public class ToDoMvcSteps {
     @Given("^a user opens a blank ToDoMVC page$")
     public void a_user_opens_a_blank_ToDoMVC_page() throws Throwable {
 
-        driver = new FirefoxDriver();
+        driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
         user = new TodoMVCUser(driver, todoMVCSite);
 

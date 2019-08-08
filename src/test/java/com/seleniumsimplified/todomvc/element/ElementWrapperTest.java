@@ -1,5 +1,6 @@
 package com.seleniumsimplified.todomvc.element;
 
+import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.elementabstractions.Checkbox;
 import com.seleniumsimplified.todomvc.elementabstractions.CheckboxElement;
 import com.seleniumsimplified.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
@@ -30,7 +31,7 @@ public class ElementWrapperTest {
 
     @Before
     public void setup(){
-        driver = new FirefoxDriver();
+        driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
         todoMVC = new ApplicationPageFunctional(driver, todoMVCSite);

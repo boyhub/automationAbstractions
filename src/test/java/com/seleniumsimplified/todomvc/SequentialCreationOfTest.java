@@ -1,5 +1,6 @@
 package com.seleniumsimplified.todomvc;
 
+import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.page.pojo.ApplicationPage;
 import com.seleniumsimplified.todomvc.site.TodoMVCSite;
 import org.junit.After;
@@ -27,7 +28,7 @@ public class SequentialCreationOfTest {
 
     @Before
     public void setup(){
-        driver = new FirefoxDriver();
+        driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
         todoMVC = new ApplicationPage(driver, todoMVCSite);

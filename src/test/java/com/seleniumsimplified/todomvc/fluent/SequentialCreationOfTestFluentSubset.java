@@ -1,5 +1,6 @@
 package com.seleniumsimplified.todomvc.fluent;
 
+import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.page.fluent.ApplicationPageFunctionalFluent;
 import com.seleniumsimplified.todomvc.site.TodoMVCSite;
 import org.junit.After;
@@ -20,7 +21,7 @@ public class SequentialCreationOfTestFluentSubset {
 
     @Before
     public void setup(){
-        driver = new FirefoxDriver();
+        driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
         //todoMVC = new ApplicationPage(driver, todoMVCSite);

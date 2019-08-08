@@ -1,6 +1,7 @@
 package com.seleniumsimplified.selenium.support.navigation;
 
 
+import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.domain.actors.TodoMVCUser;
 import com.seleniumsimplified.todomvc.navigation.TodoMVCNav;
 import com.seleniumsimplified.todomvc.page.fluent.ApplicationPageFunctionalFluent;
@@ -29,7 +30,7 @@ public class NavigationTest {
 
     @Before
     public void setup(){
-        driver = new FirefoxDriver();
+        driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
         //todoMVC = new ApplicationPage(driver, todoMVCSite);
