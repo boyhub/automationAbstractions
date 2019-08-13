@@ -1,6 +1,7 @@
-package com.seleniumsimplified.selenium.support.navigation;
+package com.seleniumsimplified.todomvc.navigation;
 
 
+import com.seleniumsimplified.selenium.support.navigation.WaitUntil;
 import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
 import com.seleniumsimplified.todomvc.domain.actors.TodoMVCUser;
 import com.seleniumsimplified.todomvc.navigation.TodoMVCNav;
