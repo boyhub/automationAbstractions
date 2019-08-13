@@ -1,8 +1,10 @@
 package com.seleniumsimplified.selenium.support.navigation;
 
-import org.openqa.selenium.support.ui.Clock;
 import org.openqa.selenium.support.ui.LoadableComponent;
-import org.openqa.selenium.support.ui.SystemClock;
+
+import java.time.Clock;
+import java.time.Duration;
+import java.time.Instant;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -20,7 +22,7 @@ public class PublicLoadableComponentWaiter {
     public int timeoutInSeconds = 10;
 
     public PublicLoadableComponentWaiter(LoadableComponent aComponent) {
-        clock = new SystemClock();
+        clock = Clock.systemDefaultZone();
         this.componentName =  aComponent.getClass().getCanonicalName();
         this.isLoadedPage = new PublicIsLoadableComponent(aComponent);
     }
@@ -31,9 +33,9 @@ public class PublicLoadableComponentWaiter {
         // this code throws exception rather than error
 
         try{
-            long end = clock.laterBy(SECONDS.toMillis(timeoutInSeconds));
+            final Instant end = clock.instant().plus(Duration.ofSeconds(timeoutInSeconds));
 
-            while (clock.isNowBefore(end)) {
+            while (clock.instant().isBefore(end)) {
                 try {
                     isLoadedPage.isLoaded();
                     return;

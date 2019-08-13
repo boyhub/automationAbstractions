@@ -6,12 +6,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.SlowLoadableComponent;
-import org.openqa.selenium.support.ui.SystemClock;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.seleniumsimplified.todomvc.page.functionalvsstructural.StructuralEnums.ItemsInState;
 import com.seleniumsimplified.todomvc.page.functionalvsstructural.StructuralEnums.Filter;
 
 import java.awt.*;
+import java.time.Clock;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,7 +26,7 @@ public class ApplicationPageStructuralSlowLoadable extends SlowLoadableComponent
     private final WebDriverWait wait;
 
     public ApplicationPageStructuralSlowLoadable(WebDriver driver, TodoMVCSite todoMVCSite) {
-        super(new SystemClock(), 10);
+        super(Clock.systemDefaultZone(), 10);
 
         this.driver = driver;
         this.todoMVCSite = todoMVCSite;

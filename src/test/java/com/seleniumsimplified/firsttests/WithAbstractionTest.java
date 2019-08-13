@@ -28,21 +28,12 @@ public class WithAbstractionTest {
 
     @Before
     public void startDriver(){
-        // a true test with no abstraction would use the driver directly
-        // driver = new FirefoxDriver();
         driver = new ExecutionDriver().get();
-
-        // admittedly the line below is an abstraction but it allows me to
-        // run the tests locally more easily. It is the only abstraction
-        // used in this test class though
         siteURL = new TodoMVCSite().getURL();
-
-        //siteURL = "http://todomvc.com/architecture-examples/backbone/";
     }
 
     @Test
     public void canCreateAToDo(){
-        WebDriver driver = new ExecutionDriver().get();
         TodoMVCUser user = new TodoMVCUser(driver, new TodoMVCSite());
 
         user.opensApplication().and().createNewToDo("new task");
@@ -52,9 +43,6 @@ public class WithAbstractionTest {
 
         assertThat(page.getCountOfTodoDoItems(), is(1));
         assertThat(page.isFooterVisible(), is(true));
-
-        driver.close();
-        driver.quit();
     }
 
     @After
@@ -62,5 +50,4 @@ public class WithAbstractionTest {
         driver.close();
         driver.quit();
     }
-
 }

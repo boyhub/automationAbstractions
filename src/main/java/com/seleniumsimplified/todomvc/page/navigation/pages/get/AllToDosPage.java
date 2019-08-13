@@ -5,7 +5,8 @@ import com.seleniumsimplified.todomvc.page.slowloadablecomponent.ApplicationPage
 import com.seleniumsimplified.todomvc.site.TodoMVCSite;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.SlowLoadableComponent;
-import org.openqa.selenium.support.ui.SystemClock;
+
+import java.time.Clock;
 
 public class AllToDosPage extends SlowLoadableComponent<AllToDosPage> {
 
@@ -14,7 +15,7 @@ public class AllToDosPage extends SlowLoadableComponent<AllToDosPage> {
     private final ApplicationPageStructuralSlowLoadable page;
 
     public AllToDosPage(WebDriver driver, TodoMVCSite site){
-        super(new SystemClock(), 10);
+        super(Clock.systemDefaultZone(), 10);
         this.driver = driver;
         this.site = site;
 

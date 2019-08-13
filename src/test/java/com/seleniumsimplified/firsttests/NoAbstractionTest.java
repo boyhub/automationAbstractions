@@ -2,25 +2,15 @@ package com.seleniumsimplified.firsttests;
 
 
 import com.seleniumsimplified.selenium.support.webdriver.ExecutionDriver;
-import com.seleniumsimplified.todomvc.domain.actors.TodoMVCUser;
-import com.seleniumsimplified.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
 import com.seleniumsimplified.todomvc.site.TodoMVCSite;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
 
 public class NoAbstractionTest {
 
@@ -46,13 +36,13 @@ public class NoAbstractionTest {
         createTodo.sendKeys("new task");
         createTodo.sendKeys(Keys.ENTER);
 
-        assertThat(driver.findElement(
-                        By.className("filters")).isDisplayed(), is(true));
+        Assertions.assertTrue(driver.findElement(
+                                By.className("filters")).isDisplayed());
 
         int newToDos = driver.findElements(
                                 By.cssSelector("ul.todo-list li")).size();
 
-        assertThat(newToDos, greaterThan(originalNumberOfTodos));
+        Assertions.assertTrue(newToDos > originalNumberOfTodos);
 
         driver.close();
         driver.quit();
