@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.todomvc.page.functionalvsstructural;
+package uk.co.compendiumdev.todomvc.page.structural.pojo;
 
 public class StructuralEnums {
 

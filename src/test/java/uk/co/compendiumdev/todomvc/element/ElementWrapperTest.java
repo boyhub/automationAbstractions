@@ -4,7 +4,7 @@ import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.elementabstractions.Checkbox;
 import uk.co.compendiumdev.todomvc.elementabstractions.CheckboxElement;
 import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageStructural;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.ApplicationPageStructural;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.After;
 import org.junit.Before;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-import static uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.ItemsInState.VISIBLE;
+import static uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.ItemsInState.VISIBLE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -34,7 +34,7 @@ public class ElementWrapperTest {
         todoMVCSite = new TodoMVCSite();
 
         todoMVC = new ApplicationPageFunctional(driver, todoMVCSite);
-        todoMVC.get();
+        todoMVC.open();
     }
 
     @Test

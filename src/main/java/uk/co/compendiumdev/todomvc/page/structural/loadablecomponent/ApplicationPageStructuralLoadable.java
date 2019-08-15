@@ -1,23 +1,25 @@
-package uk.co.compendiumdev.todomvc.page.slowloadablecomponent;
+package uk.co.compendiumdev.todomvc.page.structural.loadablecomponent;
 
 import uk.co.compendiumdev.selenium.support.webelement.EnsureWebElementIs;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralApplicationPage;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.SlowLoadableComponent;
-
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.ItemsInState;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.Filter;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.ItemsInState;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.Filter;
 
 import java.awt.*;
-import java.time.Clock;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ApplicationPageStructuralSlowLoadable extends SlowLoadableComponent<ApplicationPageStructuralSlowLoadable> {
+public class ApplicationPageStructuralLoadable extends LoadableComponent<ApplicationPageStructuralLoadable> implements StructuralApplicationPage {
 
     private static final By CLEAR_COMPLETED = By.id("clear-completed");
 
@@ -25,9 +27,7 @@ public class ApplicationPageStructuralSlowLoadable extends SlowLoadableComponent
     private final TodoMVCSite todoMVCSite;
     private final WebDriverWait wait;
 
-    public ApplicationPageStructuralSlowLoadable(WebDriver driver, TodoMVCSite todoMVCSite) {
-        super(Clock.systemDefaultZone(), 10);
-
+    public ApplicationPageStructuralLoadable(WebDriver driver, TodoMVCSite todoMVCSite) {
         this.driver = driver;
         this.todoMVCSite = todoMVCSite;
         wait = new WebDriverWait(driver,10);
@@ -50,7 +50,7 @@ public class ApplicationPageStructuralSlowLoadable extends SlowLoadableComponent
         return items.get(itemIndex).getText();
     }
 
-    private List<WebElement> getTodoItems(ItemsInState state) {
+    public List<WebElement> getTodoItems(ItemsInState state) {
         return driver.findElements(By.cssSelector(state.cssSelector()));
     }
 
@@ -61,15 +61,39 @@ public class ApplicationPageStructuralSlowLoadable extends SlowLoadableComponent
         createTodo.sendKeys(keysToSend);
     }
 
+    @Override
+    public void open() {
+        get();
+    }
+
 
     @Override
     protected void load() {
         driver.get(todoMVCSite.getURL());
+
+        int maxNumberOfTimesToCheckIsLoaded=100;
+        long millisecondsToWaitForPollingTime=100L;
+
+        while(maxNumberOfTimesToCheckIsLoaded>0){
+
+            try{
+                isLoaded();
+                break; // we are loaded - exit the loop
+            }catch(Error e){
+                // not loaded yet, but don't propogate Error from load
+            }
+
+            maxNumberOfTimesToCheckIsLoaded--;
+            try {
+                Thread.sleep(millisecondsToWaitForPollingTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+        }
     }
 
-    // made public to allow other parts of the abstraction layer to use it
     @Override
-    public void isLoaded() throws Error {
+    protected void isLoaded() throws Error {
 
         boolean loadedState = true;
         String notLoadedDescription = "";
@@ -83,11 +107,11 @@ public class ApplicationPageStructuralSlowLoadable extends SlowLoadableComponent
 
             // app sections must exist in the dom
             // throws noSuchElementException if not available
-            driver.findElement(By.className("todoapp"));
-            driver.findElement(By.className("header"));
-            driver.findElement(By.className("main"));
-            driver.findElement(By.className("footer"));
-            driver.findElement(By.className("new-todo"));
+            driver.findElement(By.id("todoapp"));
+            driver.findElement(By.id("header"));
+            driver.findElement(By.id("main"));
+            driver.findElement(By.id("footer"));
+            driver.findElement(By.id("new-todo"));
 
         }catch(Exception e){
             throw new Error("Exception thrown when checking isLoaded " + e.getMessage());
@@ -99,11 +123,11 @@ public class ApplicationPageStructuralSlowLoadable extends SlowLoadableComponent
     }
 
     public boolean isFooterVisible() {
-        return driver.findElement(By.className("footer")).isDisplayed();
+        return driver.findElement(By.id("footer")).isDisplayed();
     }
 
     public boolean isMainVisible() {
-        return driver.findElement(By.className("main")).isDisplayed();
+        return driver.findElement(By.id("main")).isDisplayed();
     }
 
     public void deleteTodoItem(int todoIndex) {
@@ -162,14 +186,8 @@ public class ApplicationPageStructuralSlowLoadable extends SlowLoadableComponent
     }
 
     public void clickOnFilter(Filter filter) {
-        List<WebElement> filters = driver.findElements(By.cssSelector(".filters li a"));
+        List<WebElement> filters = driver.findElements(By.cssSelector("#filters li a"));
         filters.get(filter.index()).click();
-    }
-
-    public String getSelectedFilterText() {
-        WebElement selectedFilter = driver.findElement(By.cssSelector(".filters li > a.selected"));
-        System.out.println(selectedFilter.getText());
-        return selectedFilter.getText();
     }
 
     public void toggleCompletionOfItem(int itemIndex) {

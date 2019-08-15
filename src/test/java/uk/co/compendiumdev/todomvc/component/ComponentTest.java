@@ -27,7 +27,7 @@ public class ComponentTest {
         todoMVC = new ApplicationPageFunctional(driver, todoMVCSite);
         page = new ApplicationPageStructuralComponents(driver, todoMVCSite);
 
-        todoMVC.get();
+        todoMVC.open();
     }
 
     @Test

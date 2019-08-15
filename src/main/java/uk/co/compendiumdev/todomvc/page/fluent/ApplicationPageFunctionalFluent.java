@@ -37,7 +37,7 @@ public class ApplicationPageFunctionalFluent {
     }
 
     public ApplicationPageFunctionalFluent get() {
-        functional.get();
+        functional.open();
         return this;
     }
 

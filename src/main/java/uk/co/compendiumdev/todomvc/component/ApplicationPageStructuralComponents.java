@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.ItemsInState;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.Filter;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.ItemsInState;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.Filter;
 
 import java.awt.*;
 import java.util.List;

@@ -3,7 +3,7 @@ package uk.co.compendiumdev.todomvc.domain.actors;
 
 import uk.co.compendiumdev.todomvc.domain.objects.ToDoList;
 import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageStructural;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.ApplicationPageStructural;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.openqa.selenium.WebDriver;
 

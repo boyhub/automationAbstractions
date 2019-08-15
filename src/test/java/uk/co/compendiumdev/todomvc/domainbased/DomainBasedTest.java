@@ -5,7 +5,7 @@ import uk.co.compendiumdev.todomvc.domain.objects.ToDoItem;
 import uk.co.compendiumdev.todomvc.domain.objects.ToDoList;
 import uk.co.compendiumdev.todomvc.domain.actors.TodoMVCUser;
 import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageStructural;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.ApplicationPageStructural;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.After;
 import org.junit.Before;
@@ -35,7 +35,7 @@ public class DomainBasedTest {
 
         //todoMVC = new ApplicationPage(driver, todoMVCSite);
         todoMVC = new ApplicationPageFunctional(driver, todoMVCSite);
-        todoMVC.get();
+        todoMVC.open();
     }
 
     @Test

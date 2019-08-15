@@ -1,28 +1,62 @@
 package uk.co.compendiumdev.todomvc.page.functionalvsstructural;
 
+import uk.co.compendiumdev.todomvc.page.structural.loadablecomponent.ApplicationPageStructuralLoadable;
+import uk.co.compendiumdev.todomvc.page.structural.pagefactory.ApplicationPageStructuralFactory;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.ApplicationPageStructural;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralApplicationPage;
+import uk.co.compendiumdev.todomvc.page.structural.slowloadablecomponent.ApplicationPageStructuralSlowLoadable;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-import static uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.Filter.*;
-import static uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.ItemsInState.*;
+import static uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.Filter.*;
+import static uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.ItemsInState.*;
 
 public class ApplicationPageFunctional {
 
     // switch between different structural implementations
-    private ApplicationPageStructural structure;
+    private StructuralApplicationPage structure;
+    //private ApplicationPageStructural structure;
     //private ApplicationPageStructuralFactory structure;
     //private ApplicationPageStructuralLoadable structure;
     //private ApplicationPageStructuralSlowLoadable structure;
 
+    public static ApplicationPageFunctional getPojoBacked(WebDriver driver, TodoMVCSite todoMVCSite){
+        return new ApplicationPageFunctional(
+                new ApplicationPageStructural(driver, todoMVCSite),
+                driver, todoMVCSite);
+    }
+
+    public static ApplicationPageFunctional getFactoryBacked(WebDriver driver, TodoMVCSite todoMVCSite){
+        return new ApplicationPageFunctional(
+                new ApplicationPageStructuralFactory(driver, todoMVCSite),
+                driver, todoMVCSite);
+    }
+
+    public static ApplicationPageFunctional getLoadableBacked(WebDriver driver, TodoMVCSite todoMVCSite){
+        return new ApplicationPageFunctional(
+                new ApplicationPageStructuralLoadable(driver, todoMVCSite),
+                driver, todoMVCSite);
+    }
+
+    public static ApplicationPageFunctional getSlowLoadableBacked(WebDriver driver, TodoMVCSite todoMVCSite){
+        return new ApplicationPageFunctional(
+                new ApplicationPageStructuralSlowLoadable(driver, todoMVCSite),
+                driver, todoMVCSite);
+    }
+
     public ApplicationPageFunctional(WebDriver driver, TodoMVCSite todoMVCSite) {
 
+        // by default use the Pojo
         structure = new ApplicationPageStructural(driver, todoMVCSite);
         //structure = new ApplicationPageStructuralFactory(driver, todoMVCSite);
         //structure = new ApplicationPageStructuralLoadable(driver, todoMVCSite);
         //structure = new ApplicationPageStructuralSlowLoadable(driver, todoMVCSite);
+    }
 
+    public ApplicationPageFunctional(StructuralApplicationPage structuralPage, WebDriver driver, TodoMVCSite todoMVCSite) {
+        this.structure = structuralPage;
     }
 
     public int getCountOfTodoDoItems() {
@@ -47,8 +81,8 @@ public class ApplicationPageFunctional {
         structure.typeIntoNewToDo(todoTitle, Keys.RETURN);
     }
 
-    public void get() {
-        structure.get();
+    public void open() {
+        structure.open();
     }
 
     public boolean isFooterVisible() {

@@ -1,6 +1,6 @@
 package uk.co.compendiumdev.todomvc.page.navigation.pages.get;
 
-import uk.co.compendiumdev.todomvc.page.slowloadablecomponent.ApplicationPageStructuralSlowLoadable;
+import uk.co.compendiumdev.todomvc.page.structural.slowloadablecomponent.ApplicationPageStructuralSlowLoadable;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.SlowLoadableComponent;

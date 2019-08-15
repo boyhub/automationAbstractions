@@ -1,31 +1,78 @@
-package uk.co.compendiumdev.todomvc.page.functionalvsstructural;
+package uk.co.compendiumdev.todomvc.page.structural.pagefactory;
 
 import uk.co.compendiumdev.selenium.support.webelement.EnsureWebElementIs;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralApplicationPage;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.ItemsInState;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.Filter;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.ItemsInState;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.Filter;
 
 import java.awt.*;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ApplicationPageStructural {
+public class ApplicationPageStructuralFactory implements StructuralApplicationPage {
 
-    private static final By CLEAR_COMPLETED = By.id("clear-completed");
+
+
+    @FindBy(how= How.CSS, using="ul#todo-list li:not(.hidden)")
+    public List<WebElement> visibleTodoItems;
+
+    @FindBy(how= How.CSS, using="ul#todo-list li.completed:not(.hidden)")
+    public List<WebElement> visibleCompletedTodoItems;
+
+    @FindBy(how= How.CSS, using="ul#todo-list li:not(.completed):not(.hidden)")
+    public List<WebElement> visibleActiveTodoItems;
+
+    @FindBy(how = How.ID, using="new-todo")
+    private WebElement createTodo;
+
+    @FindBy(how = How.ID, using="footer")
+    private WebElement footer;
+
+    @FindBy(how = How.ID, using="main")
+    private WebElement main;
+
+    @FindBy(how = How.CSS, using="#todo-count strong")
+    private WebElement countElementStrong;
+
+    @FindBy(how = How.CSS, using="#todo-count")
+    private WebElement countElement;
+
+    @FindBy(how = How.CSS, using="#filters li a")
+    List<WebElement> filters;
+
+    @FindBy(how = How.ID, using="clear-completed")
+    List<WebElement> clearCompletedAsList;
+
+    @FindBy(how = How.ID, using="clear-completed")
+    WebElement clearCompletedButton;
+
+    private final By DESTROY_BUTTON = By.cssSelector("button.destroy");
+    private final By EDIT_FIELD = By.cssSelector("input.edit");
+    private final By INPUT_TOGGLE = By.cssSelector("input.toggle");
+
+
+
 
     private final WebDriver driver;
     private final TodoMVCSite todoMVCSite;
     private final WebDriverWait wait;
 
-    public ApplicationPageStructural(WebDriver driver, TodoMVCSite todoMVCSite) {
+    public ApplicationPageStructuralFactory(WebDriver driver, TodoMVCSite todoMVCSite) {
+
+        PageFactory.initElements(driver, this);
+
         this.driver = driver;
         this.todoMVCSite = todoMVCSite;
         wait = new WebDriverWait(driver,10);
@@ -44,36 +91,50 @@ public class ApplicationPageStructural {
     }
 
     public String getToDoText(int itemIndex) {
-        List<WebElement> items = getTodoItems(ItemsInState.VISIBLE);
+        java.util.List<WebElement> items = getTodoItems(ItemsInState.VISIBLE);
         return items.get(itemIndex).getText();
     }
 
-    public List<WebElement> getTodoItems(ItemsInState state) {
-        return driver.findElements(By.cssSelector(state.cssSelector()));
+    public java.util.List<WebElement> getTodoItems(ItemsInState state) {
+        List<WebElement> returnList = null;
+
+        switch (state){
+            case VISIBLE:
+                returnList = visibleTodoItems;
+                break;
+
+            case VISIBLE_COMPLETED:
+                returnList = visibleCompletedTodoItems;
+                break;
+
+            case VISIBLE_ACTIVE:
+                returnList = visibleActiveTodoItems;
+                break;
+        }
+
+        return returnList;
     }
 
-
     public void typeIntoNewToDo(CharSequence... keysToSend) {
-        WebElement createTodo = driver.findElement(By.className("new-todo"));
         createTodo.click();
         createTodo.sendKeys(keysToSend);
     }
 
-    public void get() {
+    public void open() {
         driver.get(todoMVCSite.getURL());
     }
 
     public boolean isFooterVisible() {
-        return driver.findElement(By.className("footer")).isDisplayed();
+        return footer.isDisplayed();
     }
 
     public boolean isMainVisible() {
-        return driver.findElement(By.className("main")).isDisplayed();
+        return main.isDisplayed();
     }
 
     public void deleteTodoItem(int todoIndex) {
-        List<WebElement> items = getTodoItems(ItemsInState.VISIBLE);
-        WebElement todoListItem = items.get(todoIndex);
+
+        WebElement todoListItem = visibleTodoItems.get(todoIndex);
 
         wait.until(ExpectedConditions.elementToBeClickable(todoListItem));
 
@@ -88,23 +149,22 @@ public class ApplicationPageStructural {
 
         todoListItem.click(); // enable the destroy button
 
-        WebElement destroyButton = todoListItem.findElement(By.cssSelector("button.destroy"));
+        // because this is relative to a dynamically populate item it can't be declared
+        // as an @FindBy
+        WebElement destroyButton = todoListItem.findElement(DESTROY_BUTTON);
         wait.until(ExpectedConditions.elementToBeClickable(destroyButton));
 
         destroyButton.click();
     }
 
     public void editItem(int itemIndex, String editTheTitleTo) {
-        List<WebElement> items = getTodoItems(ItemsInState.VISIBLE);
-        WebElement todoListItem = items.get(itemIndex);
+        WebElement todoListItem = visibleTodoItems.get(itemIndex);
         wait.until(ExpectedConditions.elementToBeClickable(todoListItem));
 
         // have no choice but to use actions here
         new Actions(driver).doubleClick(todoListItem.findElement(By.cssSelector("div > label"))).perform();
-        // have to be more specific about locators on the mac, the above works, the below doesn't
-        //new Actions(driver).doubleClick(todoListItem).perform();
 
-        WebElement editfield = todoListItem.findElement(By.cssSelector("input.edit"));
+        WebElement editfield = todoListItem.findElement(EDIT_FIELD);
         wait.until(ExpectedConditions.elementToBeClickable(editfield));
         editfield.click();
         editfield.clear();
@@ -114,12 +174,10 @@ public class ApplicationPageStructural {
 
 
     public Integer getCountInFooter() {
-        WebElement countElement = driver.findElement(By.cssSelector(".todo-count strong"));
-        return Integer.valueOf(countElement.getText());
+        return Integer.valueOf(countElementStrong.getText());
     }
 
     public String getCountTextInFooter() {
-        WebElement countElement = driver.findElement(By.cssSelector(".todo-count"));
         String countText = countElement.getText();
 
         // remove the number from the string
@@ -127,33 +185,29 @@ public class ApplicationPageStructural {
     }
 
     public void clickOnFilter(Filter filter) {
-        List<WebElement> filters = driver.findElements(By.cssSelector(".filters li a"));
         filters.get(filter.index()).click();
     }
 
     public void toggleCompletionOfItem(int itemIndex) {
 
-        List<WebElement> items = getTodoItems(ItemsInState.VISIBLE);
-        WebElement todoListItem = items.get(itemIndex);
+        WebElement todoListItem = visibleTodoItems.get(itemIndex);
         wait.until(ExpectedConditions.elementToBeClickable(todoListItem));
 
-        WebElement checkbox = todoListItem.findElement(By.cssSelector("input.toggle"));
+        WebElement checkbox = todoListItem.findElement(INPUT_TOGGLE);
         checkbox.click();
     }
 
     public boolean isClearCompletedVisible() {
         // it may or may not be in the dom
-        List<WebElement> clearCompleted = driver.findElements(CLEAR_COMPLETED);
-        if(clearCompleted.size()==0){return false;}
+        if(clearCompletedAsList.size()==0){return false;}
 
-        return clearCompleted.get(0).isDisplayed();
+        return clearCompletedAsList.get(0).isDisplayed();
     }
 
     public Integer getClearCompletedCount() {
         Integer clearCompletedCount=0;
 
         if(isClearCompletedVisible()){
-            WebElement clearCompletedButton = driver.findElement(CLEAR_COMPLETED);
             String clearCompletedText = clearCompletedButton.getText();
             Pattern completedText = Pattern.compile("Clear completed \\((.+)\\)");
             Matcher matcher = completedText.matcher(clearCompletedText);
@@ -167,8 +221,6 @@ public class ApplicationPageStructural {
     }
 
     public void clickClearCompleted() {
-        WebElement clearCompletedButton = driver.findElement(CLEAR_COMPLETED);
         clearCompletedButton.click();
     }
-
 }

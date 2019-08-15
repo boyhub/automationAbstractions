@@ -18,7 +18,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 import static uk.co.compendiumdev.todomvc.navigation.TodoMVCNav.Pages.*;
-import static uk.co.compendiumdev.todomvc.page.functionalvsstructural.StructuralEnums.Filter.*;
+import static uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.Filter.*;
 
 public class NavigationTest {
 
