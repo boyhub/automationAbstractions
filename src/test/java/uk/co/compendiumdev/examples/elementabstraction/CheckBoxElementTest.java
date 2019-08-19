@@ -27,6 +27,8 @@ public class CheckBoxElementTest {
     }
 
     // NOTE: using local methods as DSL rather than Page object
+    //       this is partly to keep the test separate from other tests
+    //       but also to demonstrate this local abstraction concept.
 
     @Test
     public void canMarkAnItemCompleted(){
@@ -47,7 +49,6 @@ public class CheckBoxElementTest {
 
         // Exercise: the next 3 lines mean - mark Item Active
         // - refactor the next 3 lines into a local markItemActive(int) method
-        // - optional - should the markItemActive be refactored into a page object?
         WebElement todoListItem = getCheckboxWebElementAt(1);
         checkBox = new CheckboxHTMLElement(todoListItem);
         checkBox.uncheck();
@@ -74,7 +75,7 @@ public class CheckBoxElementTest {
         return driver.findElements(By.cssSelector("ul.todo-list div.view input.toggle[checked]")).size();
     }
 
-    // optional - convert this test to use a page object
+    // Exercise - convert this test to use a page object
 
     // - optional - should the markItemActive be refactored into a page object?
     // - optional - should the markItemCompleted be refactored into a page object?
