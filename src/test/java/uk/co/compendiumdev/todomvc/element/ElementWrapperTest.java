@@ -1,11 +1,5 @@
 package uk.co.compendiumdev.todomvc.element;
 
-import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
-import uk.co.compendiumdev.todomvc.elementabstractions.Checkbox;
-import uk.co.compendiumdev.todomvc.elementabstractions.CheckboxElement;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
-import uk.co.compendiumdev.todomvc.page.structural.pojo.ApplicationPageStructural;
-import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,12 +8,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
+import uk.co.compendiumdev.todomvc.elementabstractions.Checkbox;
+import uk.co.compendiumdev.todomvc.elementabstractions.CheckboxElement;
+import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
+import uk.co.compendiumdev.todomvc.page.structural.pojo.ApplicationPageStructural;
+import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 import java.util.List;
 
-import static uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.ItemsInState.VISIBLE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static uk.co.compendiumdev.todomvc.page.structural.pojo.StructuralEnums.ItemsInState.VISIBLE;
 
 public class ElementWrapperTest {
 

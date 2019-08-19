@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.firsttests;
+package uk.co.compendiumdev.examples.firsttests;
 
 
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;

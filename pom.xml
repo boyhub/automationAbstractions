@@ -69,6 +69,13 @@
         </dependency>
 
 
+        <!-- https://github.com/bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.6.2</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 

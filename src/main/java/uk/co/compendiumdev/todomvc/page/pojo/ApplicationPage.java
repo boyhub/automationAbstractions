@@ -73,7 +73,7 @@ public class ApplicationPage {
 
         // on my mac, sometimes this fails because
         // the default size of the window is small so
-        // the element is off screen,
+        // the elementabstraction is off screen,
         // I used to do this with an extra todoListItem.click()
         // where the first click brings it on to screen
         // but by scrolling, the button is lost
@@ -108,7 +108,7 @@ public class ApplicationPage {
         editfield.click();
 
         // clearing the field causes the entire field to disappear again
-        // and then we have a stale element exception when we send keys
+        // and then we have a stale elementabstraction exception when we send keys
         // does field lose control?
         // Note: this used to work - did GUI change? or did webdriver change?
         // editfield.clear();

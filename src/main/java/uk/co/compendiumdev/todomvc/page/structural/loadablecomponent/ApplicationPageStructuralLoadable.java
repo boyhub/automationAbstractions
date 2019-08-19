@@ -138,7 +138,7 @@ public class ApplicationPageStructuralLoadable extends LoadableComponent<Applica
 
         // on my mac, sometimes this fails because
         // the default size of the window is small so
-        // the element is off screen,
+        // the elementabstraction is off screen,
         // I used to do this with an extra todoListItem.click()
         // where the first click brings it on to screen
         // but by scrolling, the button is lost
