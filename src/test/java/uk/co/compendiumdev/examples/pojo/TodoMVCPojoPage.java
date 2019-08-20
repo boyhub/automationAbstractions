@@ -38,7 +38,8 @@ public class TodoMVCPojoPage {
 //        }
     }
 
-    // TODO: EXERCISE: refactor the class so that By selectors are static final fields
+    // TODO:
+    //       EXERCISE: refactor the class so that By selectors are static final fields
     public List<WebElement> getTodoItems() {
         return driver.findElements(By.cssSelector("ul.todo-list li div.view"));
     }
@@ -75,7 +76,8 @@ public class TodoMVCPojoPage {
         // but by scrolling, the button is lost
         // I decided to use JavaScript to scroll it into view instead
 
-        // TODO: EXERCISE: I created a support abstraction object called EnsureWebElementIs
+        // TODO:
+        //      EXERCISE: I created a support abstraction object called EnsureWebElementIs
         //      refactor the line of code below to use the EnsureWebElementIs object
         ((JavascriptExecutor) driver).executeScript(
                 "window.scrollTo(0," + todoListItem.getLocation().getY() + ")");
@@ -101,11 +103,13 @@ public class TodoMVCPojoPage {
                                                 By.cssSelector("input.edit")));
         editfield.click();
 
+
+        // TODO:
+        //       EXERCISE: refactor this into a 'cleared' method on EnsureWebElementIs
+        //       and use the EnsureWebElementIs in the page object
         // clear causes the javascript on the field to trigger and close the input
         // perhaps it loses focus? Use JS instead to empty field
-        //editfield.clear();
-        // TODO: EXERCISE: refactor this into a 'cleared' method on EnsureWebElementIs
-        //       and use the EnsureWebElementIs in the page object
+        // editfield.clear();
         ((JavascriptExecutor)driver).executeScript(
                 "arguments[0].value='';", editfield);
 

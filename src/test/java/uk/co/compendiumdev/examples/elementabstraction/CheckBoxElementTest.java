@@ -39,8 +39,9 @@ public class CheckBoxElementTest {
         assertThat(getCountOfTodoItems(), is(3));
         assertThat(getCountOfCompletedItems(), is(0));
 
-        // Exercise: the next 3 lines mean - mark Item Active
-        // - refactor the next 3 lines into a local markItemCompleted(int) method
+        // TODO:
+        //       EXERCISE: the next 3 lines mean - mark Item Active
+        //       - refactor the next 3 lines into a local markItemCompleted(int) method
         WebElement todoListItem1 = getCheckboxWebElementAt(1);
         CheckboxHTMLElement checkBox = new CheckboxHTMLElement(todoListItem1);
         checkBox.check();
@@ -75,7 +76,8 @@ public class CheckBoxElementTest {
         return driver.findElements(By.cssSelector("ul.todo-list div.view input.toggle[checked]")).size();
     }
 
-    // Exercise - convert this test to use a page object
+    // TODO:
+    //       EXERCISE: Convert this test to use a page object
 
     // - optional - should the markItemActive be refactored into a page object?
     // - optional - should the markItemCompleted be refactored into a page object?

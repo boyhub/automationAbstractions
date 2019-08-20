@@ -33,7 +33,8 @@ public class DriverManagerTest {
 
         ExecutionDriver manager = new ExecutionDriver();
 
-        // TODO: EXERCISE : change the code in the ExecutionDriver to open Firefox instead of Chrome
+        // TODO:
+        //       EXERCISE : change the code in the ExecutionDriver to open Firefox instead of Chrome
         //                  the driver is created in the `getUncached` method
         WebDriver driver = manager.get();
 
