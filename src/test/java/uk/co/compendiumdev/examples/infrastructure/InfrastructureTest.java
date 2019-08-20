@@ -13,6 +13,10 @@ public class InfrastructureTest {
         Abstractions exist to help with the infrastructure of Selenium WebDriver
 
         e.g. https://github.com/bonigarcia/webdrivermanager
+
+        getting local WebDriver environment ready via
+
+        mvn test -Dtest=InfrastructureTest
      */
 
     @Test
