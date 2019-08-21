@@ -42,7 +42,6 @@ public class ToDoMvcSteps {
 
     @After
     public void closeBrowser(){
-        driver.close();
-        driver.quit();
+        ExecutionDriver.closeDriver(driver);
     }
 }

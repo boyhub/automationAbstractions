@@ -39,7 +39,6 @@ public class WithAbstractionTest {
 
     @After
     public void stopDriver(){
-        driver.close();
-        driver.quit();
+        ExecutionDriver.closeDriver(driver);
     }
 }

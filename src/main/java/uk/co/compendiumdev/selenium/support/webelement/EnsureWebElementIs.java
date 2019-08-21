@@ -13,6 +13,8 @@ public class EnsureWebElementIs {
      * because click didn't scroll up on Mac Firefox -
      * added a scroll to y location method called inViewOnThePage
      * which scrolls to the elementabstraction's y position
+     *
+     * This may not be required in newest versions of WebDriver
       */
 
     public static void inViewOnThePage(WebDriver driver, WebElement todoListItem) {

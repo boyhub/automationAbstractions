@@ -1,12 +1,19 @@
-package uk.co.compendiumdev.examples.pojo;
+package uk.co.compendiumdev.examples.synchronisedcomponent;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.List;
 
-public class TodoMVCPojoPage {
+/**
+ * This is a copy of the TodoMVCPojoPage to keep the examples isolated
+ * but the editItem has been amended to use a component
+ * the component has in built synchronisation so that a 'get' will
+ * wait until the component is ready to work with.
+ */
+public class SynchronisedComponentPojoPage {
 
     private static final By TODO_ITEMS = By.cssSelector("ul.todo-list li div.view");
 
@@ -14,7 +21,7 @@ public class TodoMVCPojoPage {
     private final String url;
     private final WebDriverWait wait;
 
-    public TodoMVCPojoPage(WebDriver driver, String url) {
+    public SynchronisedComponentPojoPage(WebDriver driver, String url) {
         this.driver = driver;
         this.url = url;
         wait = new WebDriverWait(driver,10);
@@ -30,9 +37,6 @@ public class TodoMVCPojoPage {
         return items.get(itemIndex).getText();
     }
 
-    // TODO:
-    //       EXERCISE:
-    //                  refactor the class so that all By selectors are static final fields
     public void typeIntoNewToDo(CharSequence... keysToSend) {
         WebElement createTodo = driver.findElement(By.className("new-todo"));
         createTodo.click();
@@ -69,23 +73,10 @@ public class TodoMVCPojoPage {
         // used actions here because WebElement supports click only
         new Actions(driver).doubleClick(todoListItem).perform();
 
-        WebElement editfield = wait.until(ExpectedConditions.
-                                        elementToBeClickable(
-                                                By.cssSelector("li.editing input.edit")));
+        // TodoEditField is a component with synchronisation
+        final TodoEditField editField = new TodoEditField(driver);
+        editField.get();
+        editField.edit(editTheTitleTo);
 
-        editfield.click();
-
-        // TODO:
-        //       EXERCISE: refactor this into a 'cleared' method on EnsureWebElementIs
-        //       and use the EnsureWebElementIs in the page object
-        // clear causes the javascript on the field to trigger and close the input
-        // perhaps it loses focus? Use JS instead to empty field
-        // editfield.clear();
-        ((JavascriptExecutor)driver).executeScript(
-                "arguments[0].value='';", editfield);
-
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
     }
-
 }

@@ -177,7 +177,6 @@ public class NavigationTest {
 
     @After
     public void teardown(){
-        driver.close();
-        driver.quit();
+        ExecutionDriver.closeDriver(driver);
     }
 }

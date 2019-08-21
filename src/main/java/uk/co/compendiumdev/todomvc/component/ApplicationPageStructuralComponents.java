@@ -32,14 +32,6 @@ public class ApplicationPageStructuralComponents {
         this.driver = driver;
         this.todoMVCSite = todoMVCSite;
         wait = new WebDriverWait(driver,10);
-
-        // move the mouse out of the way so it
-        // doesn't interfere with the test
-        try {
-            new Robot().mouseMove(0,0);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
     }
 
     public int getCountOfTodo(ItemsInState state) {

@@ -1,12 +1,16 @@
-package uk.co.compendiumdev.examples.pojo;
+package uk.co.compendiumdev.examples.component;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.List;
 
-public class TodoMVCPojoPage {
+/**
+ * This is a copy of the TodoMVCPojoPage to keep the examples isolated
+ */
+public class ComponentPojoPage {
 
     private static final By TODO_ITEMS = By.cssSelector("ul.todo-list li div.view");
 
@@ -14,7 +18,7 @@ public class TodoMVCPojoPage {
     private final String url;
     private final WebDriverWait wait;
 
-    public TodoMVCPojoPage(WebDriver driver, String url) {
+    public ComponentPojoPage(WebDriver driver, String url) {
         this.driver = driver;
         this.url = url;
         wait = new WebDriverWait(driver,10);
@@ -30,9 +34,6 @@ public class TodoMVCPojoPage {
         return items.get(itemIndex).getText();
     }
 
-    // TODO:
-    //       EXERCISE:
-    //                  refactor the class so that all By selectors are static final fields
     public void typeIntoNewToDo(CharSequence... keysToSend) {
         WebElement createTodo = driver.findElement(By.className("new-todo"));
         createTodo.click();
@@ -75,17 +76,10 @@ public class TodoMVCPojoPage {
 
         editfield.click();
 
-        // TODO:
-        //       EXERCISE: refactor this into a 'cleared' method on EnsureWebElementIs
-        //       and use the EnsureWebElementIs in the page object
-        // clear causes the javascript on the field to trigger and close the input
-        // perhaps it loses focus? Use JS instead to empty field
-        // editfield.clear();
         ((JavascriptExecutor)driver).executeScript(
                 "arguments[0].value='';", editfield);
 
         editfield.sendKeys(editTheTitleTo);
         editfield.sendKeys(Keys.ENTER);
     }
-
 }

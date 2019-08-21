@@ -45,6 +45,9 @@ public class NoAbstractionTest {
         Assertions.assertTrue(newToDos > originalNumberOfTodos);
 
         driver.close();
-        driver.quit();
+        try {
+            driver.quit();
+        }catch(Exception e){
+        }
     }
 }

@@ -40,8 +40,7 @@ public class WebDriverWaitTest {
 
     @After
     public void stopDriver(){
-        driver.close();
-        driver.quit();
+        ExecutionDriver.closeDriver(driver);
     }
 
 

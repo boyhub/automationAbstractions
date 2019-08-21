@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.selenium.support.webdriver;
+package uk.co.compendiumdev.examples.drivercontrol;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,9 +9,11 @@ import org.openqa.selenium.safari.SafariDriver;
  * Class to abstract the creation of the driver to make it easier to
  * configure and switch between browsers.
  */
-public class ExecutionDriver {
+public class TestDriverManager {
 
     private WebDriver driver;
+    private static WebDriver globalDriver;
+
 
     /**
         Create a 'managed driver' i.e.
@@ -30,11 +32,23 @@ public class ExecutionDriver {
     }
 
     /**
+        Create a cached global driver used statically.
+     */
+    public static WebDriver getDriver() {
+
+        if(globalDriver==null){
+            globalDriver = new TestDriverManager().getUncached();
+        }
+
+        return globalDriver;
+    }
+
+    /**
         Close the cached and managed driver
      */
     public void close() {
         if(driver!=null){
-            ExecutionDriver.closeDriver(driver);
+            TestDriverManager.closeDriver(driver);
         }
     }
 
@@ -48,10 +62,10 @@ public class ExecutionDriver {
 
         //return new FirefoxDriver();
         return new ChromeDriver();
-        //return new SafariDriver();
+        //return new SafariDriver(); // Mac only
     }
 
-    /*
+    /**
         A convenience method to make it easier to close
         unmanaged drivers without caring if they need
         one or both close/quit methods
@@ -65,6 +79,14 @@ public class ExecutionDriver {
 
         }
     }
+
+    /**
+        Close the cached global driver.
+     */
+    public static void closeBrowser() {
+        TestDriverManager.closeDriver(globalDriver);
+    }
+
 
 
 }

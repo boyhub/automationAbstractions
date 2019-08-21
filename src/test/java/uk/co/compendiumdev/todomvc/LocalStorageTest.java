@@ -102,7 +102,6 @@ public class LocalStorageTest {
     @After
     public void teardown(){
 
-        driver.close();
-        driver.quit();
+        ExecutionDriver.closeDriver(driver);
     }
 }

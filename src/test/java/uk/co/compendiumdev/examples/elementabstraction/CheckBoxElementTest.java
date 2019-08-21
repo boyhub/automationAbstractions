@@ -91,12 +91,11 @@ public class CheckBoxElementTest {
 
     @After
     public void teardown(){
-
-        try {
-            driver.close();
-            driver.quit();
-        }catch(Exception e){
-
-        }
+        ExecutionDriver.closeDriver(driver);
     }
+
+    // TODO:
+    //       EXERCISE:
+    //                  The Selenium WebDriver classes have a Select class which is an element abstraction.
+    //                  Have a look at the source code for this and see if it gives you additional ideas.
 }

@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.examples.pojo;
+package uk.co.compendiumdev.examples.pagefactory;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,20 +13,30 @@ import static org.hamcrest.Matchers.is;
 
 /**
  * This is a basic example of a test that uses a very simple page object
+ * in this case the page object uses the PageFactory annotations and is
+ * intialised with an initElements call
  */
-public class TodoMVCPojoTest {
+public class TodoMVCPageFactoryTest {
 
     private WebDriver driver;
     private TodoMVCSite todoMVCSite;
 
-    private TodoMVCPojoPage todoMVC;
+    private TodoMVCPageFactoryPage todoMVC;
+
+    // TODO:
+    //      EXERCISE:
+    //                  use the intellij compare functionality to compare this
+    //                  test with the TodoMVCPojoTest. Only the page objects
+    //                  should be functionally different. Then compare the page
+    //                  objects themselves
+
 
     @Before
     public void setup(){
         driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
-        todoMVC = new TodoMVCPojoPage(driver, todoMVCSite.getURL());
+        todoMVC = new TodoMVCPageFactoryPage(driver, todoMVCSite.getURL());
         todoMVC.open();
     }
 
@@ -93,13 +103,6 @@ public class TodoMVCPojoTest {
         assertThat(todoMVC.getToDoText(afterEditCount-1), is("Edited Todo"));
     }
 
-    /*
-        TODO:
-                QUESTION:
-                            Is this test necessary?
-                            Because we have seen that we can create, edit and delete to do items.
-                            Why would we need a scenario test?
-     */
     @Test
     public void scenarioTest(){
 
@@ -131,20 +134,10 @@ public class TodoMVCPojoTest {
         assertThat(todoMVC.getTodoItems().size(), is(0));
     }
 
-
     @After
     public void teardown(){
         ExecutionDriver.closeDriver(driver);
     }
 
-    /*
-        single tests are useful for application functionality,
-        but when building abstraction layers
-        we need to know that they will be robust in more circumstances.
-        Scenario tests help flush out synchronisation and other issues
-        in page objects which tests focussed on individual functionality do not.
 
-        Scenario tests are a good way to flush out intermittency due to the abstraction
-        layers, which might not appear until many tests are running in CI.
-     */
 }

@@ -22,14 +22,6 @@ public class ApplicationPage {
         this.driver = driver;
         this.todoMVCSite = todoMVCSite;
         wait = new WebDriverWait(driver,10);
-
-        // move the mouse out of the way so it
-        // doesn't interfere with the test
-        try {
-            new Robot().mouseMove(0,0);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
     }
 
     public int getCountOfTodoDoItems() {
@@ -80,7 +72,9 @@ public class ApplicationPage {
         // I decided to use JavaScript to scroll it into view instead
         EnsureWebElementIs.inViewOnThePage(driver, todoListItem);
 
-        todoListItem.click(); // enable the destroy button
+        // todoListItem.click(); // enable the destroy button
+        // show the destroy button
+        new Actions(driver).moveToElement(todoListItem).perform();
 
         WebElement destroyButton = todoListItem.findElement(By.cssSelector("button.destroy"));
         wait.until(ExpectedConditions.elementToBeClickable(destroyButton));

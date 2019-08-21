@@ -28,10 +28,12 @@ public class DriverManagerTest {
         and I value flexibility.
      */
 
+    // Note this test uses a different DriverManager than the rest of the tests
+    //      to allow experimentation here that will not break the rest of the example code
     @Test
     public void canUseADefaultBrowser(){
 
-        ExecutionDriver manager = new ExecutionDriver();
+        TestDriverManager manager = new TestDriverManager();
 
         // TODO:
         //       EXERCISE : change the code in the ExecutionDriver to open Firefox instead of Chrome
@@ -47,6 +49,20 @@ public class DriverManagerTest {
         manager.close();
     }
 
+    @Test
+    public void staticAccessIsOftenCommon(){
+
+        WebDriver driver = TestDriverManager.getDriver();
+
+        final TodoMVCSite todoMVCSite = new TodoMVCSite();
+
+        driver.get(todoMVCSite.getURL());
+
+        Assertions.assertTrue(driver.getTitle().contains("TodoMVC"));
+
+        TestDriverManager.closeBrowser();
+    }
+
     /*
         Driver Manager classes can become very complicated.
 
@@ -58,9 +74,15 @@ public class DriverManagerTest {
         - manage multiple browsers,
         - share browsers but support a unique browser per Test
             - this requires using Thread identifiers when tests are run in parallel
+        - hash map management of named browser drivers e.g. browsers.get("AdminUser");
         - configure themselves from System Properties e.g. JVM -D parameters
         - configure themselves from Environment Variables
         - be configured dynamically e.g. manager.setDefault("Firefox")
+
+        With more flexibility comes more responsibility:
+
+        - they may need to identify if a browser has crashed, or is no longer available
+            - and start a new browser if the cached instance is no longer working
 
         Here is an example of an older 'generic' driver manager that I started creating.
 
