@@ -27,6 +27,11 @@ public class WorkaroundTest {
 
         driver.get(todoMVCSite.getURL());
 
+        // EXAMPLE WORKAROUND:
+        // mouse used to interfere sometimes
+        // move it out of the way
+        MouseControl.moveOutOfTheWay();
+
         // 60 should be enough to go off the page
         for(int todos=0; todos<60; todos++){
             createTodo("todo " + todos);

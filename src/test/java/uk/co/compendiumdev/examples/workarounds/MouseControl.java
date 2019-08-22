@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.selenium.support.webdriver;
+package uk.co.compendiumdev.examples.workarounds;
 
 import java.awt.*;
 
