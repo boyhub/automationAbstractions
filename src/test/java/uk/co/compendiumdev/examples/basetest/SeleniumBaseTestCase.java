@@ -41,4 +41,6 @@ public class SeleniumBaseTestCase {
 
         Also this class has a habit of being a dumping ground for
         methods we want to reuse.
+
+        This might even have a driver.get() to open the main application page.
      */
