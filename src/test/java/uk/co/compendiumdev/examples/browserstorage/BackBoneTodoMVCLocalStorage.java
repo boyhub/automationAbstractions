@@ -1,8 +1,7 @@
-package uk.co.compendiumdev.todomvc.site;
+package uk.co.compendiumdev.examples.browserstorage;
 
-import uk.co.compendiumdev.selenium.support.html5.Storage;
-import uk.co.compendiumdev.todomvc.localstorage.TodoMvcLocalStorage;
 import org.openqa.selenium.JavascriptExecutor;
+import uk.co.compendiumdev.examples.browserstorage.html5.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +13,9 @@ public class BackBoneTodoMVCLocalStorage implements TodoMvcLocalStorage {
     private final String storage_namespace;
     private final Storage localStorage;
 
-    public BackBoneTodoMVCLocalStorage(String storage_namespace, JavascriptExecutor js) {
+    public BackBoneTodoMVCLocalStorage(JavascriptExecutor js) {
         this.localStorage = new Storage(js);
-        this.storage_namespace = storage_namespace;
+        this.storage_namespace = "todos-backbone";
     }
 
     @Override

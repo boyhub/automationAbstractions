@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.selenium.support.html5;
+package uk.co.compendiumdev.examples.browserstorage.html5;
 
 
 import org.openqa.selenium.JavascriptExecutor;

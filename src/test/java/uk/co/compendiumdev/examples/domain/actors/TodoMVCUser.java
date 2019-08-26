@@ -1,11 +1,12 @@
-package uk.co.compendiumdev.todomvc.domain.actors;
+package uk.co.compendiumdev.examples.domain.actors;
 
 
+import org.openqa.selenium.WebDriver;
+import uk.co.compendiumdev.examples.domain.pojofordomain.TodoMVCDomainPojoPage;
 import uk.co.compendiumdev.todomvc.domain.objects.ToDoList;
 import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
 import uk.co.compendiumdev.todomvc.page.structural.pojo.ApplicationPageStructural;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
-import org.openqa.selenium.WebDriver;
 
 /**
  * A high level user object which wraps 'user' functionality making a user focussed DSL without
@@ -15,14 +16,12 @@ import org.openqa.selenium.WebDriver;
 public class TodoMVCUser {
     private final WebDriver driver;
     private final TodoMVCSite site;
-    private final ToDoList todoList;
 
 
     public TodoMVCUser(WebDriver driver, TodoMVCSite todoMVCSite) {
         this.driver = driver;
         this.site = todoMVCSite;
 
-        this.todoList = new ToDoList();
     }
 
     public TodoMVCUser opensApplication() {
@@ -31,25 +30,19 @@ public class TodoMVCUser {
     }
 
     public TodoMVCUser createNewToDo(String toDoText) {
-        todoList.addNewToDoItem(toDoText);
 
-        ApplicationPageFunctional page = new ApplicationPageFunctional(driver, site);
+        TodoMVCDomainPojoPage page = new TodoMVCDomainPojoPage(driver, site.getURL());
 
         page.enterNewToDo(toDoText);
 
         return this;
     }
 
-    public ToDoList getTodoList() {
-        return todoList;
-    }
 
     public TodoMVCUser deleteToDoAt(int positionInList) {
-        todoList.deleteItemAtPosition(positionInList);
 
-        ApplicationPageStructural structural = new ApplicationPageStructural(driver, site);
-
-        structural.deleteTodoItem(positionInList);
+        TodoMVCDomainPojoPage page = new TodoMVCDomainPojoPage(driver, site.getURL());
+        page.deleteTodoItem(positionInList);
 
         return this;
     }
@@ -58,12 +51,4 @@ public class TodoMVCUser {
         return this;
     }
 
-    public TodoMVCUser completesToDo(String toDoText) {
-        int position = todoList.getPositionOf(toDoText);
-
-        ApplicationPageStructural structural = new ApplicationPageStructural(driver, site);
-        structural.toggleCompletionOfItem(position);
-
-        return this;
-    }
 }

@@ -1,7 +1,7 @@
-package uk.co.compendiumdev.todomvc.domain.objects;
+package uk.co.compendiumdev.examples.domain.todos;
 
 /**
- * A domain representation of a ToDo Item, no interaction with the Web or WebDriver
+ * A domain representation of a To Do Item, no interaction with the Web or WebDriver
  */
 public class ToDoItem {
 

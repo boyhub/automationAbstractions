@@ -1,8 +1,8 @@
 package uk.co.compendiumdev.examples.firsttests;
 
 
+import uk.co.compendiumdev.examples.domain.actors.TodoMVCUser;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
-import uk.co.compendiumdev.todomvc.domain.actors.TodoMVCUser;
 import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.After;

@@ -1,17 +1,15 @@
-package uk.co.compendiumdev.todomvc;
+package uk.co.compendiumdev.examples.browserstorage;
 
 
-import uk.co.compendiumdev.selenium.support.html5.Storage;
-import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
-import uk.co.compendiumdev.todomvc.localstorage.TodoMvcLocalStorage;
-import uk.co.compendiumdev.todomvc.page.pojo.ApplicationPage;
-import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.html5.LocalStorage;
+import uk.co.compendiumdev.examples.browserstorage.html5.Storage;
+import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
+import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
@@ -22,15 +20,15 @@ public class LocalStorageTest {
 
     private WebDriver driver;
     private TodoMVCSite todoMVCSite;
-    private ApplicationPage todoMVC;
+    private TodoMVCStoragePojoPage todoMVC;
 
     @Before
     public void setup(){
         driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
 
-        todoMVC = new ApplicationPage(driver, todoMVCSite);
-        todoMVC.get();
+        todoMVC = new TodoMVCStoragePojoPage(driver, todoMVCSite.getURL());
+        todoMVC.open();
     }
 
     @Test
@@ -79,10 +77,8 @@ public class LocalStorageTest {
     @Test
     public void updatesLocalStorageRefactored(){
 
-
-        // I'm not that comfortable with adding driver to the todoMVCsite,
-        // but done it here for expediency, can refactor later
-        TodoMvcLocalStorage todoStorage = todoMVCSite.getLocalStorage(driver);
+        TodoMvcLocalStorage todoStorage = new BackBoneTodoMVCLocalStorage(
+                                                    (JavascriptExecutor) driver);
 
         assertThat(todoStorage.length(), is(0L));
 

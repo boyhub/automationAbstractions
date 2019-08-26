@@ -1,7 +1,8 @@
-package uk.co.compendiumdev.todomvc.cucumberjvm;
+package uk.co.compendiumdev.examples.domaindslcucumberjvm;
 
+import uk.co.compendiumdev.examples.domain.actors.TodoMVCUser;
+import uk.co.compendiumdev.examples.domain.pojofordomain.TodoMVCDomainPojoPage;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
-import uk.co.compendiumdev.todomvc.domain.actors.TodoMVCUser;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -17,6 +18,7 @@ public class ToDoMvcSteps {
     private WebDriver driver;
     private TodoMVCSite todoMVCSite;
     private TodoMVCUser user;
+    private TodoMVCDomainPojoPage page;
 
     @Given("^a user opens a blank ToDoMVC page$")
     public void a_user_opens_a_blank_ToDoMVC_page() throws Throwable {
@@ -26,6 +28,8 @@ public class ToDoMvcSteps {
         user = new TodoMVCUser(driver, todoMVCSite);
 
         user.opensApplication();
+
+        page = new TodoMVCDomainPojoPage(driver, todoMVCSite.getURL());
     }
 
     @When("^the user creates a todo \"([^\"]*)\"$")
@@ -36,7 +40,7 @@ public class ToDoMvcSteps {
 
     @Then("^they see (\\d+) todo item on the page$")
     public void they_see_todo_item_on_the_page(int expectedToDoCount) throws Throwable {
-        assertThat(user.getTodoList().size(), is(expectedToDoCount));
+        assertThat(page.getTodoItems().size(), is(expectedToDoCount));
     }
 
 

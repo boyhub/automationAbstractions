@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.todomvc.localstorage;
+package uk.co.compendiumdev.examples.browserstorage;
 
 import java.util.Collection;
 

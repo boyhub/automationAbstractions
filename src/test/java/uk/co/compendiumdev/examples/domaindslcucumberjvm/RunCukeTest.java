@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.todomvc.cucumberjvm;
+package uk.co.compendiumdev.examples.domaindslcucumberjvm;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

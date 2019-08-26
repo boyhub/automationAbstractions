@@ -77,6 +77,15 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- random data generation
+             https://github.com/DiUS/java-faker
+        -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
     </dependencies>
 
     <!-- I have added the build section to support importing into

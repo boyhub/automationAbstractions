@@ -1,10 +1,10 @@
-package uk.co.compendiumdev.todomvc.domain.objects;
+package uk.co.compendiumdev.examples.domain.todos;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A domain representation of a ToDo List - no interaction with WebDriver
+ * A domain representation of a To Do List - no interaction with WebDriver
  * Would be used for context and expected results
  */
 public class ToDoList {
@@ -74,5 +74,9 @@ public class ToDoList {
         }catch(IndexOutOfBoundsException e){
             return false;
         }
+    }
+
+    public List<ToDoItem> todos() {
+        return todos;
     }
 }

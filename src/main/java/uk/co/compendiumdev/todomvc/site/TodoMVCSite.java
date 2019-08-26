@@ -1,10 +1,6 @@
 package uk.co.compendiumdev.todomvc.site;
 
 
-import uk.co.compendiumdev.todomvc.localstorage.TodoMvcLocalStorage;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-
 public class TodoMVCSite {
 
     public String getURL(){
@@ -19,7 +15,4 @@ public class TodoMVCSite {
         return "backbone";
     }
 
-    public TodoMvcLocalStorage getLocalStorage(WebDriver driver) {
-        return new BackBoneTodoMVCLocalStorage("todos-" + getName(), (JavascriptExecutor) driver);
-    }
 }
