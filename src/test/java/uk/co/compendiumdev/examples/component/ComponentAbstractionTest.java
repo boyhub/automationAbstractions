@@ -1,6 +1,7 @@
 package uk.co.compendiumdev.examples.component;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -39,6 +40,7 @@ public class ComponentAbstractionTest {
     @Test
     public void canUseComponents(){
 
+        // examples of using a variety of components
         final ItemsLeftCount itemsLeft = new ItemsLeftCount(driver);
         Assertions.assertEquals(2,itemsLeft.count());
         Assertions.assertEquals(5,countVisibleTodos());
@@ -49,7 +51,31 @@ public class ComponentAbstractionTest {
 
         filters.completed();
         Assertions.assertEquals(3,countVisibleTodos());
+
+        VisibleToDoEntry todo = VisibleToDoEntry.getToDoAt(driver, 1);
+        Assert.assertEquals("todo 2",todo.getText());
+
+        todo.edit("visible todo");
+        Assert.assertEquals("visible todo",todo.getText());
+
+        todo.markActive();
+        Assertions.assertEquals(2,countVisibleTodos());
+
+        filters.active();
+        Assertions.assertEquals(3,countVisibleTodos());
+
+        todo = VisibleToDoEntry.getToDoAt(driver, 1);
+        Assert.assertEquals("visible todo",todo.getText());
+
     }
+
+    /*
+        TODO:
+            EXERCISE:
+                Review the components ItemsLeftCount, FooterFilters, VisibleToDoEntry
+                Make sure you understand them.
+     */
+
 
     // TODO:
     //      EXERCISE:
@@ -59,6 +85,14 @@ public class ComponentAbstractionTest {
     public int countVisibleTodos(){
         return driver.findElements(By.cssSelector("ul.todo-list li:not(.hidden)")).size();
     }
+
+    // TODO:
+    //      EXERCISE:
+    //                the VisibleTodoList component should return a VisibleToDoEntry
+    //                when a method named getToDoAt(int position)
+    //                did you also remove the static method from VisibleToDoEntry?
+    //                or did you wrap that method and use it?
+
 
     // TODO:
     //      EXERCISE:
@@ -86,6 +120,15 @@ public class ComponentAbstractionTest {
 
     // TODO:
     //      QUESTION:
+    //                should the VisibleTodoList have the methods
+    //                editItem and deleteTodoItem?
+    //                or should we rely on the getToDoAt(position) method
+    //                and then use the edit and delete methods on the visibleToDoItem?
+    //      EXERCISE:
+    //                try it and see
+
+    // TODO:
+    //      QUESTION:
     //                Should the ComponentPojoPage implement a filters()
     //                method which returns a FooterFilters object?
     //                  e.g. page.filters().active();
@@ -96,6 +139,19 @@ public class ComponentAbstractionTest {
     //                Decide, and then implement.
     //                Or find a better way to model the footer.
 
+
+    /*
+   TODO:
+       QUESTION:
+           What other components would you create?
+       EXERCISE:
+           Look at the application under test.
+           Model it as a diagram, or list of components to design
+           a possible set of components that you would create to model
+           the application and use in the tests.
+           IF you create any components that are not here then try and
+           implement some of them and use them in some tests.
+    */
 
     @After
     public void teardown(){

@@ -219,6 +219,14 @@ public class NavigationTest {
     //               experiment with this and see if it works for you.
 
 
+    /*
+        TODO:
+            EXERCISE:
+                There is a TodoMVCNav object in this package.
+                Try and use that in a test and see if an enum based approach
+                Helps readability and maintenance.
+     */
+
     @After
     public void teardown(){
         ExecutionDriver.closeDriver(driver);

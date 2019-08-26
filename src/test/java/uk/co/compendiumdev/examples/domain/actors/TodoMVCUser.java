@@ -3,9 +3,6 @@ package uk.co.compendiumdev.examples.domain.actors;
 
 import org.openqa.selenium.WebDriver;
 import uk.co.compendiumdev.examples.domain.pojofordomain.TodoMVCDomainPojoPage;
-import uk.co.compendiumdev.todomvc.domain.objects.ToDoList;
-import uk.co.compendiumdev.todomvc.page.functionalvsstructural.ApplicationPageFunctional;
-import uk.co.compendiumdev.todomvc.page.structural.pojo.ApplicationPageStructural;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 /**

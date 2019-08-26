@@ -1,7 +1,6 @@
 package uk.co.compendiumdev.todomvc;
 
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
-import uk.co.compendiumdev.todomvc.page.pojo.ApplicationPage;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.After;
 import org.junit.Before;
