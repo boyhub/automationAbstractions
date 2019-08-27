@@ -1,9 +1,9 @@
 package uk.co.compendiumdev.examples.browserstorage;
 
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.html5.LocalStorage;
@@ -22,7 +22,7 @@ public class LocalStorageTest {
     private TodoMVCSite todoMVCSite;
     private TodoMVCStoragePojoPage todoMVC;
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
@@ -95,7 +95,7 @@ public class LocalStorageTest {
         assertThat(todoStorage.length(), is(3L));
     }
 
-    @After
+    @AfterEach
     public void teardown(){
 
         ExecutionDriver.closeDriver(driver);

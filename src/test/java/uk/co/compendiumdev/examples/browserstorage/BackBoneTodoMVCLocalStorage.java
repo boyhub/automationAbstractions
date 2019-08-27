@@ -21,11 +21,10 @@ public class BackBoneTodoMVCLocalStorage implements TodoMvcLocalStorage {
     @Override
     public List<String> itemTitles() {
 
-        List<String> titles = new ArrayList();
+        List<String> titles = new ArrayList<>();
 
         String[] indexSplit = {};
-        String index = "";
-        index = localStorage.getItem(storage_namespace);
+        String index = localStorage.getItem(storage_namespace);
 
         try{
             indexSplit = index.split(",");

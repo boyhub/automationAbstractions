@@ -2,8 +2,6 @@ package uk.co.compendiumdev.examples.drivercontrol;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 
 /**
  * Class to abstract the creation of the driver to make it easier to

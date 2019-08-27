@@ -1,10 +1,10 @@
 package uk.co.compendiumdev.examples.domaindslcucumberjvm;
 
+import cucumber.api.java.en.And;
 import uk.co.compendiumdev.examples.domain.actors.TodoMVCUser;
 import uk.co.compendiumdev.examples.domain.pojofordomain.TodoMVCDomainPojoPage;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
-import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -43,9 +43,16 @@ public class ToDoMvcSteps {
         assertThat(page.getTodoItems().size(), is(expectedToDoCount));
     }
 
+    // when using JUnit 4 I was able to use a hook, but not with JUnit 5
+//    @After
+//    public void closeBrowser(){
+//        ExecutionDriver.closeDriver(driver);
+//    }
 
-    @After
-    public void closeBrowser(){
+    // for JUnit 5 I added a close browser step rather than try and hack about
+    // with additional hooks and other complications
+    @And("^exit the application$")
+    public void exitTheApplication() {
         ExecutionDriver.closeDriver(driver);
     }
 }

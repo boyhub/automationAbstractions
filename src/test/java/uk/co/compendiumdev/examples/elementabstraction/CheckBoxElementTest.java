@@ -1,11 +1,11 @@
 package uk.co.compendiumdev.examples.elementabstraction;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Keys;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,12 +16,11 @@ import static org.hamcrest.Matchers.is;
 public class CheckBoxElementTest {
 
     private WebDriver driver;
-    private TodoMVCSite todoMVCSite;
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
-        todoMVCSite = new TodoMVCSite();
+        final TodoMVCSite todoMVCSite = new TodoMVCSite();
 
         driver.get(todoMVCSite.getURL());
     }
@@ -89,7 +88,7 @@ public class CheckBoxElementTest {
     // - question - CheckboxHTMLElement implements WrapsElement
     //   does that help us? are there any risks to doing that?
 
-    @After
+    @AfterEach
     public void teardown(){
         ExecutionDriver.closeDriver(driver);
     }

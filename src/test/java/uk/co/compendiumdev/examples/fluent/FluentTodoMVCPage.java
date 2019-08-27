@@ -4,7 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import uk.co.compendiumdev.todomvc.page.fluent.ApplicationPageFunctionalFluent;
 
 import java.util.List;
 
@@ -91,17 +90,17 @@ public class FluentTodoMVCPage {
         // used actions here because WebElement supports click only
         new Actions(driver).doubleClick(todoListItem).perform();
 
-        WebElement editfield = wait.until(ExpectedConditions.
+        WebElement editField = wait.until(ExpectedConditions.
                                         elementToBeClickable(
                                                 By.cssSelector("li.editing input.edit")));
 
-        editfield.click();
+        editField.click();
 
         ((JavascriptExecutor)driver).executeScript(
-                "arguments[0].value='';", editfield);
+                "arguments[0].value='';", editField);
 
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
+        editField.sendKeys(editTheTitleTo);
+        editField.sendKeys(Keys.ENTER);
         return this;
     }
 

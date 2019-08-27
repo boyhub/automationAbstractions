@@ -1,8 +1,8 @@
 package uk.co.compendiumdev.examples.pagefactory;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
@@ -31,7 +31,7 @@ public class TodoMVCPageFactoryTest {
     //                  objects themselves
 
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
@@ -134,7 +134,7 @@ public class TodoMVCPageFactoryTest {
         assertThat(todoMVC.getTodoItems().size(), is(0));
     }
 
-    @After
+    @AfterEach
     public void teardown(){
         ExecutionDriver.closeDriver(driver);
     }

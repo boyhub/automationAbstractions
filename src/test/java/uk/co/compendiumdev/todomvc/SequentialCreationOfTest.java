@@ -2,9 +2,9 @@ package uk.co.compendiumdev.todomvc;
 
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,7 +15,6 @@ import static org.hamcrest.Matchers.*;
 public class SequentialCreationOfTest {
 
     private WebDriver driver;
-    private TodoMVCSite todoMVCSite;
 
     // comment, uncomment to use the different implementations
     // could go further and create factory and interface but leave like this for now
@@ -24,10 +23,10 @@ public class SequentialCreationOfTest {
     private ApplicationPage todoMVC;
     //private ApplicationPageFunctional todoMVC;
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
-        todoMVCSite = new TodoMVCSite();
+        final TodoMVCSite todoMVCSite = new TodoMVCSite();
 
         todoMVC = new ApplicationPage(driver, todoMVCSite);
         //todoMVC = new ApplicationPageFunctional(driver, todoMVCSite);
@@ -46,7 +45,7 @@ public class SequentialCreationOfTest {
         assertThat(newToDos, greaterThan(originalNumberOfTodos));
         assertThat(newToDos, is(originalNumberOfTodos + 1));
 
-        assertThat("new task", is(todoMVC.getLastToDoIext()));
+        assertThat("new task", is(todoMVC.getLastToDoText()));
     }
 
     @Test
@@ -61,7 +60,7 @@ public class SequentialCreationOfTest {
         assertThat(newToDos, greaterThan(originalNumberOfTodos));
         assertThat(newToDos, is(originalNumberOfTodos + 1));
 
-        assertThat("trimmed task", is(todoMVC.getLastToDoIext()));
+        assertThat("trimmed task", is(todoMVC.getLastToDoText()));
     }
 
 
@@ -170,7 +169,7 @@ public class SequentialCreationOfTest {
 
         assertThat(editedATodoCount, is(originalNumberOfTodos + 1));
 
-        assertThat("Edited Me", is(todoMVC.getLastToDoIext()));
+        assertThat("Edited Me", is(todoMVC.getLastToDoText()));
 
     }
 
@@ -294,7 +293,7 @@ public class SequentialCreationOfTest {
         assertThat(todoMVC.getCountOfCompletedTodoDoItems(), is(0));
     }
 
-    @After
+    @AfterEach
     public void teardown(){
 
         ExecutionDriver.closeDriver(driver);

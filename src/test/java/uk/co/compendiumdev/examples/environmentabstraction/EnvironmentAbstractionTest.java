@@ -1,10 +1,9 @@
 package uk.co.compendiumdev.examples.environmentabstraction;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
-import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 public class EnvironmentAbstractionTest {
 

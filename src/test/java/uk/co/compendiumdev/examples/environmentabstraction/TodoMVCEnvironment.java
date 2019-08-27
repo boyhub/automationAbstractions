@@ -1,11 +1,6 @@
 package uk.co.compendiumdev.examples.environmentabstraction;
 
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import uk.co.compendiumdev.todomvc.localstorage.TodoMvcLocalStorage;
-import uk.co.compendiumdev.todomvc.site.BackBoneTodoMVCLocalStorage;
-
 public class TodoMVCEnvironment {
 
     public String getURL(){

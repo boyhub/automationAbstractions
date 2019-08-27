@@ -5,9 +5,9 @@ import uk.co.compendiumdev.examples.domain.actors.TodoMVCUser;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.casestudy.structuralvsfunctional.functionalvsstructural.ApplicationPageFunctional;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,7 +18,7 @@ public class WithAbstractionTest {
     private WebDriver driver;
     String siteURL;
 
-    @Before
+    @BeforeEach
     public void startDriver(){
         driver = new ExecutionDriver().get();
         siteURL = new TodoMVCSite().getURL();
@@ -37,7 +37,7 @@ public class WithAbstractionTest {
         assertThat(page.isFooterVisible(), is(true));
     }
 
-    @After
+    @AfterEach
     public void stopDriver(){
         ExecutionDriver.closeDriver(driver);
     }

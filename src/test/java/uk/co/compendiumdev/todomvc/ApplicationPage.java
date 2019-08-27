@@ -27,7 +27,7 @@ public class ApplicationPage {
         return getTodoItems().size();
     }
 
-    public String getLastToDoIext() {
+    public String getLastToDoText() {
         List<WebElement> items = getTodoItems();
         return items.get(items.size()-1).getText();
     }
@@ -64,7 +64,7 @@ public class ApplicationPage {
 
         // on my mac, sometimes this fails because
         // the default size of the window is small so
-        // the elementabstraction is off screen,
+        // the element abstraction is off screen,
         // I used to do this with an extra todoListItem.click()
         // where the first click brings it on to screen
         // but by scrolling, the button is lost
@@ -96,17 +96,17 @@ public class ApplicationPage {
         // double click to edit and reveal the input field
         new Actions(driver).doubleClick(fieldLabel).perform();
 
-        WebElement editfield = todoListItem.findElement(By.cssSelector("input.edit"));
-        wait.until(ExpectedConditions.elementToBeClickable(editfield));
-        editfield.click();
+        WebElement editField = todoListItem.findElement(By.cssSelector("input.edit"));
+        wait.until(ExpectedConditions.elementToBeClickable(editField));
+        editField.click();
 
         // clearing the field causes the entire field to disappear again
-        // and then we have a stale elementabstraction exception when we send keys
+        // and then we have a stale element exception when we send keys
         // does field lose control?
         // Note: this used to work - did GUI change? or did webdriver change?
-        // editfield.clear();
-        // editfield.sendKeys(editTheTitleTo);
-        // editfield.sendKeys(Keys.ENTER);
+        // editField.clear();
+        // editField.sendKeys(editTheTitleTo);
+        // editField.sendKeys(Keys.ENTER);
 
         // OPTION: could find the length of the text and issue that many backspace
         StringBuilder seq = new StringBuilder();
@@ -115,7 +115,7 @@ public class ApplicationPage {
         }
         seq.append(editTheTitleTo);
         seq.append(Keys.ENTER);
-        editfield.sendKeys(seq.toString());
+        editField.sendKeys(seq.toString());
 
         // OPTION: could use actions to do the same thing? which might simulate human more
         // OPTION: could use JavaScript to change the values of the field?

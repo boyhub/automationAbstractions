@@ -59,8 +59,7 @@ public class ApplicationPageStructuralExample{
         WebElement todoListItem = items.get(itemIndex);
         wait.until(ExpectedConditions.elementToBeClickable(todoListItem));
 
-        WebElement checkbox = todoListItem.findElement(By.cssSelector("input.toggle"));
-        return checkbox;
+        return todoListItem.findElement(By.cssSelector("input.toggle"));
     }
 
     public void clickStateOfItem(int itemIndex) {

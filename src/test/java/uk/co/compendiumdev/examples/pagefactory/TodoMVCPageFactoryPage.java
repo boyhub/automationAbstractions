@@ -5,7 +5,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
@@ -26,7 +25,7 @@ public class TodoMVCPageFactoryPage {
     WebElement createTodo;
 
     @FindBy(how = How.CSS, using="li.editing input.edit")
-    WebElement editfield;
+    WebElement editField;
 
     private final WebDriver driver;
     private final String url;
@@ -104,19 +103,19 @@ public class TodoMVCPageFactoryPage {
         // used actions here because WebElement supports click only
         new Actions(driver).doubleClick(todoListItem).perform();
 
-        editfield.click();
+        editField.click();
 
         // TODO:
         //       EXERCISE: refactor this into a 'cleared' method on EnsureWebElementIs
         //       and use the EnsureWebElementIs in the page object
         // clear causes the javascript on the field to trigger and close the input
         // perhaps it loses focus? Use JS instead to empty field
-        // editfield.clear();
+        // editField.clear();
         ((JavascriptExecutor)driver).executeScript(
-                "arguments[0].value='';", editfield);
+                "arguments[0].value='';", editField);
 
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
+        editField.sendKeys(editTheTitleTo);
+        editField.sendKeys(Keys.ENTER);
     }
 
 }

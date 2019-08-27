@@ -1,8 +1,8 @@
 package uk.co.compendiumdev.examples.fluent;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
@@ -15,7 +15,7 @@ public class FluentExampleTest {
 
     private FluentTodoMVCPage todoMVC;
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
@@ -68,7 +68,7 @@ public class FluentExampleTest {
 
 
 
-    @After
+    @AfterEach
     public void teardown(){
         ExecutionDriver.closeDriver(driver);
     }

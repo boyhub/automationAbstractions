@@ -1,9 +1,9 @@
 package uk.co.compendiumdev.examples.domain;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import uk.co.compendiumdev.examples.domain.actions.TodoActions;
 import uk.co.compendiumdev.examples.domain.actors.TodoMVCUser;
@@ -11,7 +11,6 @@ import uk.co.compendiumdev.examples.domain.pojofordomain.TodoMVCDomainPojoPage;
 import uk.co.compendiumdev.examples.domain.todos.RandomTodoGenerator;
 import uk.co.compendiumdev.examples.domain.todos.ToDoItem;
 import uk.co.compendiumdev.examples.domain.todos.ToDoList;
-import uk.co.compendiumdev.examples.pojo.TodoMVCPojoPage;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
@@ -35,7 +34,7 @@ public class DomainTest {
 
     private TodoMVCDomainPojoPage todoMVC;
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
@@ -68,10 +67,10 @@ public class DomainTest {
             todoMVC.enterNewToDo(todo.getText());
         }
 
-        Assert.assertEquals(myTodos.size(), todoMVC.getTodoItems().size());
+        Assertions.assertEquals(myTodos.size(), todoMVC.getTodoItems().size());
 
         for(int index=0; index < todoMVC.getTodoItems().size(); index++){
-            Assert.assertEquals(myTodos.getItemAtPosition(index).getText(),
+            Assertions.assertEquals(myTodos.getItemAtPosition(index).getText(),
                                 todoMVC.getToDoText(index));
         }
     }
@@ -91,10 +90,10 @@ public class DomainTest {
             todoMVC.enterNewToDo(todo.getText());
         }
 
-        Assert.assertEquals(myTodos.size(), todoMVC.getTodoItems().size());
+        Assertions.assertEquals(myTodos.size(), todoMVC.getTodoItems().size());
 
         for(int index=0; index < todoMVC.getTodoItems().size(); index++){
-            Assert.assertEquals(myTodos.getItemAtPosition(index).getText(),
+            Assertions.assertEquals(myTodos.getItemAtPosition(index).getText(),
                     todoMVC.getToDoText(index));
         }
     }
@@ -115,11 +114,11 @@ public class DomainTest {
             and().
             createNewToDo("My Second Todo");
 
-        Assert.assertEquals(2, todoMVC.getTodoItems().size());
+        Assertions.assertEquals(2, todoMVC.getTodoItems().size());
 
         user.deleteToDoAt(1);
 
-        Assert.assertEquals(1, todoMVC.getTodoItems().size());
+        Assertions.assertEquals(1, todoMVC.getTodoItems().size());
     }
 
     /* TODO
@@ -155,12 +154,12 @@ public class DomainTest {
                                     "My Third To do", "My Fourth To do");
 
 
-        Assert.assertEquals(4, todoMVC.getTodoItems().size());
+        Assertions.assertEquals(4, todoMVC.getTodoItems().size());
 
         new TodoActions(driver).
                 createTodosOffset(10, "Todo %d Item ", 5);
 
-        Assert.assertEquals(14, todoMVC.getTodoItems().size());
+        Assertions.assertEquals(14, todoMVC.getTodoItems().size());
 
         /*
             TODO:
@@ -196,7 +195,7 @@ user.countNumberOfTodos()
 
 
 
-    @After
+    @AfterEach
     public void teardown(){
         ExecutionDriver.closeDriver(driver);
     }

@@ -44,13 +44,13 @@ public class TodoEditField extends SlowLoadableComponent {
 
     public void edit(final String editTheTitleTo) {
 
-        WebElement editfield = driver.findElement(By.cssSelector("li.editing input.edit"));
-        editfield.click();
+        WebElement editField = driver.findElement(By.cssSelector("li.editing input.edit"));
+        editField.click();
 
         ((JavascriptExecutor)driver).executeScript(
-                "arguments[0].value='';", editfield);
+                "arguments[0].value='';", editField);
 
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
+        editField.sendKeys(editTheTitleTo);
+        editField.sendKeys(Keys.ENTER);
     }
 }

@@ -1,9 +1,9 @@
 package uk.co.compendiumdev.examples.workarounds;
 
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import uk.co.compendiumdev.examples.navigation.TodoMVCPojoPage;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
@@ -20,7 +19,7 @@ public class WorkaroundTest {
     private WebDriver driver;
     private TodoMVCSite todoMVCSite;
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
@@ -71,7 +70,7 @@ public class WorkaroundTest {
         return driver.findElements(By.cssSelector("input.toggle")).get(itemIndex);
     }
 
-    @After
+    @AfterEach
     public void teardown(){
         ExecutionDriver.closeDriver(driver);
     }

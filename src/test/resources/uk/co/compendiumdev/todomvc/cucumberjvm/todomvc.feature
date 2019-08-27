@@ -7,3 +7,4 @@ Feature: We can create and edit To Do lists in ToDoMvc
     Given a user opens a blank ToDoMVC page
     When the user creates a todo "new task"
     Then they see 1 todo item on the page
+    And exit the application

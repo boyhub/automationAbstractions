@@ -1,8 +1,8 @@
 package uk.co.compendiumdev.examples.pojo;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
@@ -21,7 +21,7 @@ public class TodoMVCPojoTest {
 
     private TodoMVCPojoPage todoMVC;
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
         todoMVCSite = new TodoMVCSite();
@@ -132,7 +132,7 @@ public class TodoMVCPojoTest {
     }
 
 
-    @After
+    @AfterEach
     public void teardown(){
         ExecutionDriver.closeDriver(driver);
     }
@@ -142,7 +142,7 @@ public class TodoMVCPojoTest {
         but when building abstraction layers
         we need to know that they will be robust in more circumstances.
         Scenario tests help flush out synchronisation and other issues
-        in page objects which tests focussed on individual functionality do not.
+        in page objects which tests focused on individual functionality do not.
 
         Scenario tests are a good way to flush out intermittency due to the abstraction
         layers, which might not appear until many tests are running in CI.

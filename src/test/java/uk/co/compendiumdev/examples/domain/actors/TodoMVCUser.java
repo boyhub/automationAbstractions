@@ -6,7 +6,7 @@ import uk.co.compendiumdev.examples.domain.pojofordomain.TodoMVCDomainPojoPage;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 /**
- * A high level user object which wraps 'user' functionality making a user focussed DSL without
+ * A high level user object which wraps 'user' functionality making a user focused DSL without
  * bringing in Cucumber
  * It uses lower level abstractions as appropriate e.g. structural and functional pages
  */

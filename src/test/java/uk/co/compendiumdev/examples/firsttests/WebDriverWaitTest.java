@@ -3,9 +3,9 @@ package uk.co.compendiumdev.examples.firsttests;
 
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +24,7 @@ public class WebDriverWaitTest {
     private WebDriver driver;
     String siteURL;
 
-    @Before
+    @BeforeEach
     public void startDriver(){
         // a true test with no abstraction would use the driver directly
         // driver = new FirefoxDriver();
@@ -38,7 +38,7 @@ public class WebDriverWaitTest {
         //siteURL = "http://todomvc.com/architecture-examples/backbone/";
     }
 
-    @After
+    @AfterEach
     public void stopDriver(){
         ExecutionDriver.closeDriver(driver);
     }

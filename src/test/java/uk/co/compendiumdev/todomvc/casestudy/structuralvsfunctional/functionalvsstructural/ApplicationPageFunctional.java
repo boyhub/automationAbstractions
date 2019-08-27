@@ -58,7 +58,7 @@ public class ApplicationPageFunctional {
         return structure.getCountOfTodo(VISIBLE_ACTIVE);
     }
 
-    public String getLastToDoIext() {
+    public String getLastToDoText() {
         return structure.getToDoText(getCountOfTodoDoItems()-1);
     }
 

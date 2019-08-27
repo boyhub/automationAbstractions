@@ -67,7 +67,7 @@ public class ApplicationPageStructural implements StructuralApplicationPage {
 
         // on my mac, sometimes this fails because
         // the default size of the window is small so
-        // the elementabstraction is off screen,
+        // the element abstraction is off screen,
         // I used to do this with an extra todoListItem.click()
         // where the first click brings it on to screen
         // but by scrolling, the button is lost
@@ -92,15 +92,15 @@ public class ApplicationPageStructural implements StructuralApplicationPage {
         // have to be more specific about locators on the mac, the above works, the below doesn't
         //new Actions(driver).doubleClick(todoListItem).perform();
 
-        WebElement editfield = todoListItem.findElement(By.cssSelector("input.edit"));
-        wait.until(ExpectedConditions.elementToBeClickable(editfield));
-        editfield.click();
+        WebElement editField = todoListItem.findElement(By.cssSelector("input.edit"));
+        wait.until(ExpectedConditions.elementToBeClickable(editField));
+        editField.click();
 
         ((JavascriptExecutor)driver).executeScript(
-                "arguments[0].value='';", editfield);
+                "arguments[0].value='';", editField);
 
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
+        editField.sendKeys(editTheTitleTo);
+        editField.sendKeys(Keys.ENTER);
     }
 
 

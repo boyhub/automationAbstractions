@@ -71,17 +71,17 @@ public class TodoMVCPojoPage {
         // used actions here because WebElement supports click only
         new Actions(driver).doubleClick(todoListItem).perform();
 
-        WebElement editfield = wait.until(ExpectedConditions.
+        WebElement editField = wait.until(ExpectedConditions.
                                         elementToBeClickable(
                                                 By.cssSelector("li.editing input.edit")));
 
-        editfield.click();
+        editField.click();
 
         ((JavascriptExecutor)driver).executeScript(
-                "arguments[0].value='';", editfield);
+                "arguments[0].value='';", editField);
 
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
+        editField.sendKeys(editTheTitleTo);
+        editField.sendKeys(Keys.ENTER);
     }
 
 }

@@ -1,9 +1,8 @@
 package uk.co.compendiumdev.examples.component;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -15,16 +14,14 @@ import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 public class ComponentAbstractionTest {
 
     private WebDriver driver;
-    private TodoMVCSite todoMVCSite;
 
-    private TodoMVCPojoPage todoMVC;
 
-    @Before
+    @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
-        todoMVCSite = new TodoMVCSite();
+        final TodoMVCSite todoMVCSite = new TodoMVCSite();
 
-        todoMVC = new TodoMVCPojoPage(driver, todoMVCSite.getURL());
+        final TodoMVCPojoPage todoMVC = new TodoMVCPojoPage(driver, todoMVCSite.getURL());
         todoMVC.open();
 
         for(int todos=0; todos<5; todos++){
@@ -53,10 +50,10 @@ public class ComponentAbstractionTest {
         Assertions.assertEquals(3,countVisibleTodos());
 
         VisibleToDoEntry todo = VisibleToDoEntry.getToDoAt(driver, 1);
-        Assert.assertEquals("todo 2",todo.getText());
+        Assertions.assertEquals("todo 2",todo.getText());
 
         todo.edit("visible todo");
-        Assert.assertEquals("visible todo",todo.getText());
+        Assertions.assertEquals("visible todo",todo.getText());
 
         todo.markActive();
         Assertions.assertEquals(2,countVisibleTodos());
@@ -65,7 +62,7 @@ public class ComponentAbstractionTest {
         Assertions.assertEquals(3,countVisibleTodos());
 
         todo = VisibleToDoEntry.getToDoAt(driver, 1);
-        Assert.assertEquals("visible todo",todo.getText());
+        Assertions.assertEquals("visible todo",todo.getText());
 
     }
 
@@ -153,7 +150,7 @@ public class ComponentAbstractionTest {
            implement some of them and use them in some tests.
     */
 
-    @After
+    @AfterEach
     public void teardown(){
         ExecutionDriver.closeDriver(driver);
     }

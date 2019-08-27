@@ -77,20 +77,20 @@ public class TodoMVCStoragePojoPage {
         // used actions here because WebElement supports click only
         new Actions(driver).doubleClick(todoListItem).perform();
 
-        WebElement editfield = wait.until(ExpectedConditions.
+        WebElement editField = wait.until(ExpectedConditions.
                                         elementToBeClickable(
                                                 By.cssSelector("li.editing input.edit")));
 
-        editfield.click();
+        editField.click();
 
          // clear causes the javascript on the field to trigger and close the input
         // perhaps it loses focus? Use JS instead to empty field
-        // editfield.clear();
+        // editField.clear();
         ((JavascriptExecutor)driver).executeScript(
-                "arguments[0].value='';", editfield);
+                "arguments[0].value='';", editField);
 
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
+        editField.sendKeys(editTheTitleTo);
+        editField.sendKeys(Keys.ENTER);
     }
 
 

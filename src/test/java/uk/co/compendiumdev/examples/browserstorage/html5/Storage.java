@@ -29,7 +29,7 @@ public class Storage implements LocalStorage{
     @Override
     public Set<String> keySet() {
         // decided not to use .keys
-        Set<String> keys = new HashSet<String>();
+        Set<String> keys = new HashSet<>();
 
         for (int keyIndex=0; keyIndex<=size()-1; keyIndex++)
         {
@@ -59,7 +59,7 @@ public class Storage implements LocalStorage{
 
     @Override
     public void clear() {
-        js.executeScript(String.format("window.localStorage.clear();"));
+        js.executeScript("window.localStorage.clear();");
     }
 
     @Override

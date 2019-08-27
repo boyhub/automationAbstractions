@@ -145,15 +145,15 @@ public class ApplicationPageStructuralFactory implements StructuralApplicationPa
         // have no choice but to use actions here
         new Actions(driver).doubleClick(todoListItem.findElement(By.cssSelector("div > label"))).perform();
 
-        WebElement editfield = todoListItem.findElement(EDIT_FIELD);
-        wait.until(ExpectedConditions.elementToBeClickable(editfield));
-        editfield.click();
+        WebElement editField = todoListItem.findElement(EDIT_FIELD);
+        wait.until(ExpectedConditions.elementToBeClickable(editField));
+        editField.click();
 
         ((JavascriptExecutor)driver).executeScript(
-                "arguments[0].value='';", editfield);
+                "arguments[0].value='';", editField);
 
-        editfield.sendKeys(editTheTitleTo);
-        editfield.sendKeys(Keys.ENTER);
+        editField.sendKeys(editTheTitleTo);
+        editField.sendKeys(Keys.ENTER);
     }
 
 

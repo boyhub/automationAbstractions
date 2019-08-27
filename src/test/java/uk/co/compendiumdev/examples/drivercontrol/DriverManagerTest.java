@@ -1,9 +1,8 @@
 package uk.co.compendiumdev.examples.drivercontrol;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 public class DriverManagerTest {
