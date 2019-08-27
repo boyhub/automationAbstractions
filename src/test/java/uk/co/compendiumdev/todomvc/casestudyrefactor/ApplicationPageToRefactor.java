@@ -12,12 +12,31 @@ import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 import java.util.List;
 
-public class ApplicationPage {
+/*
+    TODO:
+        EXERCISE:
+            This page has been created organically as the SequentialCreationOfTest
+            was created.
+            It is a mix of functional, structural methods.
+            It isn't very generic e.g.
+               - it has an editLastItem method rather than an EditItem method
+               - it has a deleteLastItem method rather than an EditItem method
+            - review the page object and identify changes you would make
+            - implement your changes
+            - refactor this page object to components
+            - wrap the page object to create a functional page
+            - wrap the page object to create a User object
+            - what else would you change in the test or the page object?
+            - create some scenario tests, does the page object have enough synchronisation to support it
+            - run the test on different browsers, is this page object good enough to handle that?
+
+ */
+public class ApplicationPageToRefactor {
     private final WebDriver driver;
     private final TodoMVCSite todoMVCSite;
     private final WebDriverWait wait;
 
-    public ApplicationPage(WebDriver driver, TodoMVCSite todoMVCSite) {
+    public ApplicationPageToRefactor(WebDriver driver, TodoMVCSite todoMVCSite) {
         this.driver = driver;
         this.todoMVCSite = todoMVCSite;
         wait = new WebDriverWait(driver,10);
@@ -62,13 +81,6 @@ public class ApplicationPage {
 
         wait.until(ExpectedConditions.elementToBeClickable(todoListItem));
 
-        // on my mac, sometimes this fails because
-        // the default size of the window is small so
-        // the element abstraction is off screen,
-        // I used to do this with an extra todoListItem.click()
-        // where the first click brings it on to screen
-        // but by scrolling, the button is lost
-        // I decided to use JavaScript to scroll it into view instead
         EnsureWebElementIs.inViewOnThePage(driver, todoListItem);
 
         // todoListItem.click(); // enable the destroy button
@@ -177,32 +189,6 @@ public class ApplicationPage {
         if(clearCompleted.size()==0){return false;}
 
         return clearCompleted.get(0).isDisplayed();
-    }
-
-    public Integer getClearCompletedCount() {
-
-        // the clear completed button used to show the count in the button test
-
-//        Integer clearCompletedCount=0;
-//
-//        if(isClearCompletedVisible()){
-//            WebElement clearCompletedButton = driver.findElement(By.className("clear-completed"));
-//            String clearCompletedText = clearCompletedButton.getText();
-//            Pattern completedText = Pattern.compile("Clear completed \\((.+)\\)");
-//            Matcher matcher = completedText.matcher(clearCompletedText);
-//
-//            if(matcher.matches()){
-//                return Integer.valueOf(matcher.group(1));
-//            }
-//        }
-//
-//        return clearCompletedCount;
-
-        // the button no longer shows the completed count so count the list items
-        // ul.todo-list li.completed
-        return driver.findElements(By.cssSelector("ul.todo-list li.completed")).size();
-
-
     }
 
     public void clearCompleted() {

@@ -1,7 +1,6 @@
 package uk.co.compendiumdev.todomvc.casestudyrefactor;
 
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
-import uk.co.compendiumdev.todomvc.casestudyrefactor.ApplicationPage;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,26 +10,26 @@ import org.openqa.selenium.WebDriver;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-// Tests were written against the live demo version of
-// https://github.com/tastejs/todomvc/tree/f57e0b773db14f094ef09274af90042f83328412/architecture-examples/backbone
+/*
+    TODO:
+        EXERCISES:
+            - This set of tests use a page object that is ready to be refactored.
+            - The tests use Hamcrest as their assertion library, feel free to change this.
+            - Review the tests and add more tests if you identify areas of functionality
+              in the application that have not been tested.
+
+ */
 public class SequentialCreationOfTest {
 
     private WebDriver driver;
-
-    // comment, uncomment to use the different implementations
-    // could go further and create factory and interface but leave like this for now
-    // This was the first set of tests created, to create the first abstraction layer ApplicationPage
-    // This was subsequently split into functional and structural pages
-    private ApplicationPage todoMVC;
-    //private ApplicationPageFunctional todoMVC;
+    private ApplicationPageToRefactor todoMVC;
 
     @BeforeEach
     public void setup(){
         driver = new ExecutionDriver().get();
         final TodoMVCSite todoMVCSite = new TodoMVCSite();
 
-        todoMVC = new ApplicationPage(driver, todoMVCSite);
-        //todoMVC = new ApplicationPageFunctional(driver, todoMVCSite);
+        todoMVC = new ApplicationPageToRefactor(driver, todoMVCSite);
         todoMVC.get();
     }
 
@@ -96,7 +95,6 @@ public class SequentialCreationOfTest {
         assertThat(todoMVC.isMainVisible(), is(true));
     }
 
-    // TODO: check for main and footer after deleting all the items
 
     @Test
     public void canDeleteATodo(){
@@ -265,7 +263,7 @@ public class SequentialCreationOfTest {
         todoMVC.toggleCompletionOfLastItem();
 
         assertThat(todoMVC.isClearCompletedVisible(), is(true));
-        assertThat(todoMVC.getClearCompletedCount(), is(1));
+        assertThat(todoMVC.getCountInFooter(), is(1));
     }
 
     @Test
@@ -279,18 +277,18 @@ public class SequentialCreationOfTest {
         todoMVC.toggleCompletionOfLastItem();
 
         assertThat(todoMVC.isClearCompletedVisible(), is(true));
-        assertThat(todoMVC.getClearCompletedCount(), is(1));
+        assertThat(todoMVC.getCountInFooter(), is(2));
         assertThat(todoMVC.getCountOfCompletedTodoDoItems(), is(1));
 
         todoMVC.enterNewToDo("Fourth Added Item");
         todoMVC.toggleCompletionOfLastItem();
-        assertThat(todoMVC.getClearCompletedCount(), is(2));
+        assertThat(todoMVC.getCountInFooter(), is(2));
         assertThat(todoMVC.getCountOfCompletedTodoDoItems(), is(2));
 
         todoMVC.clearCompleted();
 
         assertThat(todoMVC.isClearCompletedVisible(), is(false));
-        assertThat(todoMVC.getClearCompletedCount(), is(0));
+        assertThat(todoMVC.getCountInFooter(), is(2));
         assertThat(todoMVC.getCountOfCompletedTodoDoItems(), is(0));
     }
 
