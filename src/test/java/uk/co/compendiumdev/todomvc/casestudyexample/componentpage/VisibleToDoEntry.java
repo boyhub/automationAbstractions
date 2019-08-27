@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.todomvc.casestudy.componentpage;
+package uk.co.compendiumdev.todomvc.casestudyexample.componentpage;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import uk.co.compendiumdev.examples.component.element.CheckboxElement;
 import uk.co.compendiumdev.selenium.support.webelement.EnsureWebElementIs;
+
+import java.util.NoSuchElementException;
 
 public class VisibleToDoEntry {
 
@@ -27,7 +29,8 @@ public class VisibleToDoEntry {
     }
 
     public String getText(){
-        return todoEntry.getText();
+        // safari pads the text so trim it
+        return todoEntry.getText().trim();
     }
 
     public void delete(){
@@ -50,7 +53,14 @@ public class VisibleToDoEntry {
         EnsureWebElementIs.inViewOnThePage(driver, todoEntry);
 
         // have no choice but to use actions here
-        new Actions(driver).doubleClick(todoEntry.findElement(By.cssSelector("div > label"))).perform();
+        WebElement inputLabel= todoEntry.findElement(By.cssSelector("div > label"));
+        new Actions(driver).doubleClick(inputLabel).perform();
+
+        // Actions above didn't work on safari - dropped down to JS to trigger edit
+        if(!driver.findElement(By.cssSelector("input.edit")).isDisplayed()){
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].dispatchEvent(new Event('dblclick', { 'bubbles': true }))", inputLabel);
+        }
 
         WebElement editField = todoEntry.findElement(By.cssSelector("input.edit"));
         wait.until(ExpectedConditions.elementToBeClickable(editField));

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TodoMVCPojoPage {
 
-    private static final By TODO_ITEMS = By.cssSelector("ul.todo-list li div.view");
+    private static final By TODO_ITEMS = By.cssSelector("ul.todo-list li:not(.hidden)");
 
     private final WebDriver driver;
     private final String url;
@@ -88,4 +88,11 @@ public class TodoMVCPojoPage {
         editField.sendKeys(Keys.ENTER);
     }
 
+    public int getCountOfTodoDoItems() {
+        return getTodoItems().size();
+    }
+
+    public boolean isFooterVisible() {
+        return driver.findElements(By.cssSelector("ul.filters li a")).size()>0;
+    }
 }

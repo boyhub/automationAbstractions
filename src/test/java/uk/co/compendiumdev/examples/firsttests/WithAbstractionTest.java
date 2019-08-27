@@ -2,8 +2,8 @@ package uk.co.compendiumdev.examples.firsttests;
 
 
 import uk.co.compendiumdev.examples.domain.actors.TodoMVCUser;
+import uk.co.compendiumdev.examples.pojo.TodoMVCPojoPage;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
-import uk.co.compendiumdev.todomvc.casestudy.structuralvsfunctional.functionalvsstructural.ApplicationPageFunctional;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,8 +41,8 @@ public class WithAbstractionTest {
 
         user.opensApplication().and().createNewToDo("new task");
 
-        ApplicationPageFunctional page =
-                new ApplicationPageFunctional(driver, new TodoMVCSite());
+        TodoMVCPojoPage page =
+                new TodoMVCPojoPage(driver, new TodoMVCSite().getURL());
 
         assertThat(page.getCountOfTodoDoItems(), is(1));
         assertThat(page.isFooterVisible(), is(true));

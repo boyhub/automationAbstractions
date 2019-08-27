@@ -1,6 +1,7 @@
-package uk.co.compendiumdev.todomvc;
+package uk.co.compendiumdev.todomvc.casestudyrefactor;
 
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
+import uk.co.compendiumdev.todomvc.casestudyrefactor.ApplicationPage;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -295,7 +296,6 @@ public class SequentialCreationOfTest {
 
     @AfterEach
     public void teardown(){
-
         ExecutionDriver.closeDriver(driver);
     }
 }

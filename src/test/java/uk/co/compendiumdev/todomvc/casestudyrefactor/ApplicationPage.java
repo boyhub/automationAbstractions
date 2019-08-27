@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.todomvc;
+package uk.co.compendiumdev.todomvc.casestudyrefactor;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

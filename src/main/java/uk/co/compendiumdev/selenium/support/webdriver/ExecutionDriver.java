@@ -2,6 +2,8 @@ package uk.co.compendiumdev.selenium.support.webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 /**
  * Class to abstract the creation of the driver to make it easier to
@@ -44,8 +46,8 @@ public class ExecutionDriver {
      */
     public WebDriver getUncached(){
 
-        //return new FirefoxDriver();
         return new ChromeDriver();
+        //return new FirefoxDriver();
         //return new SafariDriver();
     }
 
