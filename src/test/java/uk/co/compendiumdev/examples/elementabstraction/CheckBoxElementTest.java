@@ -1,6 +1,7 @@
 package uk.co.compendiumdev.examples.elementabstraction;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Keys;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
@@ -9,9 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 public class CheckBoxElementTest {
 
@@ -35,8 +33,8 @@ public class CheckBoxElementTest {
         createTodo("Second Added Item");
         createTodo("Third Added Item");
 
-        assertThat(getCountOfTodoItems(), is(3));
-        assertThat(getCountOfCompletedItems(), is(0));
+        Assertions.assertEquals(3, getCountOfTodoItems());
+        Assertions.assertEquals( 0 , getCountOfCompletedItems());
 
         // TODO:
         //       EXERCISE: the next 3 lines mean - mark Item Active
@@ -45,7 +43,7 @@ public class CheckBoxElementTest {
         CheckboxHTMLElement checkBox = new CheckboxHTMLElement(todoListItem1);
         checkBox.check();
 
-        assertThat(getCountOfCompletedItems(), is(1));
+        Assertions.assertEquals(1, getCountOfCompletedItems());
 
         // Exercise: the next 3 lines mean - mark Item Active
         // - refactor the next 3 lines into a local markItemActive(int) method
@@ -53,7 +51,7 @@ public class CheckBoxElementTest {
         checkBox = new CheckboxHTMLElement(todoListItem);
         checkBox.uncheck();
 
-        assertThat(getCountOfCompletedItems(), is(0));
+        Assertions.assertEquals(0, getCountOfCompletedItems());
     }
 
     public void createTodo(CharSequence... keysToSend) {

@@ -13,6 +13,17 @@ import org.openqa.selenium.WebDriver;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+/*
+    This test uses many abstractions:
+
+    - WebDriver, variables, test and method names,
+    - annotations for test execution - ordering and 'test' identification
+    - Hamcrest as an assertion abstraction
+    - TodoMVCUser as a domain abstraction for the system user
+    - A page object ApplicationPageFunctional
+    - A Driver manager ExecutionDriver
+    - A domain abstraction for the TodoMVCSite and environment
+ */
 public class WithAbstractionTest {
 
     private WebDriver driver;

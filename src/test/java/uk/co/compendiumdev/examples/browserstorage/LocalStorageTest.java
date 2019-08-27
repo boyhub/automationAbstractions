@@ -2,6 +2,7 @@ package uk.co.compendiumdev.examples.browserstorage;
 
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,9 +12,6 @@ import uk.co.compendiumdev.examples.browserstorage.html5.Storage;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
 
 public class LocalStorageTest {
 
@@ -57,7 +55,24 @@ public class LocalStorageTest {
         keys = storage.getItem(storage_namespace).split(",");
         int newSize = keys.length;
 
-        assertThat(newSize, greaterThan(initialSize));
+        /* TODO:
+                COMMENT:
+                    Most of the tests use JUnit 5 Assertions
+                    Hamcrest, might make this test more readable e.g.
+                         assertThat(newSize, greaterThan(initialSize));
+                    instead of
+                        Assertions.assertTrue(newSize > initialSize);
+                    and the assertTrue and assertEquals might read more
+                    readable if using assertThat e.g.
+                        assertThat(foundit, is(true));
+                        assertThat(todoStorage.length(), is(0L));
+                EXERCISE:
+                    Convert this test to use Hamcrest for assertions
+                    if you like it then experiment with Hamcrest in
+                    other tests. You can learn more about hamcrest
+                    at http://hamcrest.org/
+        */
+        Assertions.assertTrue(newSize > initialSize);
 
         boolean foundit = false;
 
@@ -71,7 +86,7 @@ public class LocalStorageTest {
                 foundit = true;
         }
 
-        assertThat(foundit, is(true));
+        Assertions.assertTrue(foundit);
     }
 
     @Test
@@ -80,19 +95,19 @@ public class LocalStorageTest {
         TodoMvcLocalStorage todoStorage = new BackBoneTodoMVCLocalStorage(
                                                     (JavascriptExecutor) driver);
 
-        assertThat(todoStorage.length(), is(0L));
+        Assertions.assertEquals(0L, todoStorage.length());
 
         todoMVC.enterNewToDo("First Added Item");
 
-        assertThat(todoStorage.length(), is(1L));
+        Assertions.assertEquals(1L, todoStorage.length());
 
-        assertThat(todoStorage.containsTitle("First Added Item"), is(true));
+        Assertions.assertTrue(todoStorage.containsTitle("First Added Item"));
 
         todoMVC.enterNewToDo("Next Added Item");
-        assertThat(todoStorage.length(), is(2L));
+        Assertions.assertEquals(2L, todoStorage.length());
 
         todoMVC.enterNewToDo("Third Added Item");
-        assertThat(todoStorage.length(), is(3L));
+        Assertions.assertEquals(3L, todoStorage.length());
     }
 
     @AfterEach

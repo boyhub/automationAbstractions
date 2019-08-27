@@ -30,11 +30,18 @@ public class ToDoMvcSteps {
         user.opensApplication();
 
         page = new TodoMVCDomainPojoPage(driver, todoMVCSite.getURL());
+
+        assertThat(page.getTodoItems().size(), is(0));
     }
 
     @When("^the user creates a todo \"([^\"]*)\"$")
     public void the_user_creates_a_todo(String todoName) throws Throwable {
+
+        final int initialCount = page.getTodoItems().size();
+
         user.createNewToDo(todoName);
+
+        assertThat(page.getTodoItems().size(), is( initialCount+1));
     }
 
 

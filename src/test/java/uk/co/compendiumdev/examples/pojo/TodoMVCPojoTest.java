@@ -1,15 +1,14 @@
 package uk.co.compendiumdev.examples.pojo;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+
 
 /**
  * This is a basic example of a test that uses a very simple page object
@@ -30,8 +29,6 @@ public class TodoMVCPojoTest {
         todoMVC.open();
     }
 
-    // TODO: convert to use JUnit asserts not hamcrest to keep cognitive load lower
-
     @Test
     public void canCreateAToDo(){
 
@@ -45,12 +42,12 @@ public class TodoMVCPojoTest {
 
         int newToDos = todoMVC.getTodoItems().size();
 
-        assertThat(newToDos, greaterThan(originalNumberOfTodos));
-        assertThat(newToDos, is(originalNumberOfTodos + 1));
+        Assertions.assertTrue(newToDos > originalNumberOfTodos);
+        Assertions.assertEquals(originalNumberOfTodos + 1, newToDos);
 
         // Question: Should getToDoText be zero indexed?
         //           Does that make the test easier to understand?
-        assertThat("New Task", is(todoMVC.getToDoText(newToDos-1)));
+        Assertions.assertEquals("New Task", todoMVC.getToDoText(newToDos-1));
     }
 
     @Test
@@ -62,7 +59,7 @@ public class TodoMVCPojoTest {
 
         int addedATodoCount = todoMVC.getTodoItems().size();
 
-        assertThat(addedATodoCount, is(originalNumberOfTodos + 1));
+        Assertions.assertEquals(originalNumberOfTodos + 1, addedATodoCount);
 
         // Question: Should delete be zero indexed?
         //           Is that how people think?
@@ -70,7 +67,7 @@ public class TodoMVCPojoTest {
         todoMVC.deleteTodoItem(addedATodoCount-1);
 
         int afterDeleteCount = todoMVC.getTodoItems().size();
-        assertThat(afterDeleteCount, is(originalNumberOfTodos));
+        Assertions.assertEquals(originalNumberOfTodos, afterDeleteCount);
     }
 
     @Test
@@ -82,15 +79,15 @@ public class TodoMVCPojoTest {
 
         int addedATodoCount = todoMVC.getTodoItems().size();
 
-        assertThat(addedATodoCount, is(originalNumberOfTodos + 1));
+        Assertions.assertEquals(originalNumberOfTodos + 1, addedATodoCount);
 
         // Question: should editItem be zero indexed?
         todoMVC.editItem(addedATodoCount-1, "Edited Todo");
 
         int afterEditCount = todoMVC.getTodoItems().size();
-        assertThat(afterEditCount, is(addedATodoCount));
+        Assertions.assertEquals(addedATodoCount, afterEditCount);
 
-        assertThat(todoMVC.getToDoText(afterEditCount-1), is("Edited Todo"));
+        Assertions.assertEquals("Edited Todo", todoMVC.getToDoText(afterEditCount-1));
     }
 
     /*
@@ -111,24 +108,24 @@ public class TodoMVCPojoTest {
 
         int addedATodoCount = todoMVC.getTodoItems().size();
 
-        assertThat(addedATodoCount, is(originalNumberOfTodos + 10));
+        Assertions.assertEquals(originalNumberOfTodos + 10, addedATodoCount);
 
         for(int todoIndex=0; todoIndex<10; todoIndex++) {
             todoMVC.editItem(todoIndex, "Edited Todo " + todoIndex);
         }
 
         int afterEditCount = todoMVC.getTodoItems().size();
-        assertThat(afterEditCount, is(addedATodoCount));
+        Assertions.assertEquals(addedATodoCount, afterEditCount);
 
         for(int todoIndex=0; todoIndex<10; todoIndex++) {
-            assertThat(todoMVC.getToDoText(todoIndex), is("Edited Todo " + todoIndex));
+            Assertions.assertEquals("Edited Todo " + todoIndex, todoMVC.getToDoText(todoIndex));
         }
 
         for(int todoIndex=9; todoIndex>=0; todoIndex--) {
             todoMVC.deleteTodoItem(todoIndex);
         }
 
-        assertThat(todoMVC.getTodoItems().size(), is(0));
+        Assertions.assertEquals(0, todoMVC.getTodoItems().size());
     }
 
 

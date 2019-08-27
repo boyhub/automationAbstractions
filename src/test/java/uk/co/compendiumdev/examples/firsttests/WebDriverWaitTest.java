@@ -1,6 +1,7 @@
 package uk.co.compendiumdev.examples.firsttests;
 
 
+import org.junit.jupiter.api.Assertions;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 import org.junit.jupiter.api.AfterEach;
@@ -14,10 +15,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
 
 public class WebDriverWaitTest {
 
@@ -59,13 +56,13 @@ public class WebDriverWaitTest {
         createTodo.sendKeys("new task");
         createTodo.sendKeys(Keys.ENTER);
 
-        assertThat(driver.findElement(
-                By.className("filters")).isDisplayed(), is(true));
+        Assertions.assertTrue(driver.findElement(
+                By.className("filters")).isDisplayed());
 
         int newToDos = driver.findElements(
                 By.cssSelector("ul.todo-list li")).size();
 
-        assertThat(newToDos, greaterThan(originalNumberOfTodos));
+        Assertions.assertTrue(newToDos > originalNumberOfTodos);
     }
 
     @Test
@@ -89,7 +86,7 @@ public class WebDriverWaitTest {
         int newToDos = driver.findElements(
                 By.cssSelector("ul.todo-list li")).size();
 
-        assertThat(newToDos, greaterThan(originalNumberOfTodos));
+        Assertions.assertTrue(newToDos > originalNumberOfTodos);
     }
 
 }
