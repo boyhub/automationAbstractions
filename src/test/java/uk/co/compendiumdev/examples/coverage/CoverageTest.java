@@ -14,7 +14,7 @@ public class CoverageTest {
                         class, method and line coverage.
                         Then run all the tests with code coverage (ensuring that the
                         test code is also measured, and expand the tests to use the
-                        uncovered methods.)
+                        uncovered methods (or delete the unused code).)
                         Fix any bugs in the abstraction layers that you find when you
                         use any of the 'new' abstraction layer code.
      */

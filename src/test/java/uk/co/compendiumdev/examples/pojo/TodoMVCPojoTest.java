@@ -17,7 +17,6 @@ public class TodoMVCPojoTest {
 
     private WebDriver driver;
     private TodoMVCSite todoMVCSite;
-
     private TodoMVCPojoPage todoMVC;
 
     @BeforeEach
