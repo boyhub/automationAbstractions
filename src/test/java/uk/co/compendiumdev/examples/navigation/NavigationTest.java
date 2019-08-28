@@ -78,13 +78,13 @@ public class NavigationTest {
 
         // TODO:
         //      QUESTION:
-        //               does adding an assertion above make it clearer
+        //             - Does adding an assertion above make it clearer
         //               that the test is 'doing' something?
-        //               does it make it easier to understand the test at a glance?
-        //               or is having an 'implicit' assertion via a hidden wait OK?
-        //               consider the pros and cons.
+        //             - Does it make it easier to understand the test at a glance?
+        //             - Or is having an 'implicit' assertion via a hidden wait OK?
+        //             - Consider the pros and cons.
         //      EXERCISE:
-        //               add an isLoaded() method to the page object to allow asserting
+        //             - Add an isLoaded() method to the page object to allow asserting
         //               Assertions.assertTrue(allPage.isLoaded());
 
         ActiveToDosPage activePage = new ActiveToDosPage(driver, todoMVCSite);
@@ -94,8 +94,8 @@ public class NavigationTest {
 
         // TODO:
         //      EXERCISE:
-        //               add an isLoaded() method to the page object to allow asserting
-        //               Assertions.assertTrue(activePage.isLoaded());
+        //              - Add an isLoaded() method to the page object to allow asserting
+        //                Assertions.assertTrue(activePage.isLoaded());
 
 
         CompletedToDosPage completedPage = new CompletedToDosPage(driver, todoMVCSite);
@@ -105,8 +105,8 @@ public class NavigationTest {
 
         // TODO:
         //      EXERCISE:
-        //               add an isLoaded() method to the page object to allow asserting
-        //               Assertions.assertTrue(completedPage.isLoaded());
+        //              - Add an isLoaded() method to the page object to allow asserting
+        //                Assertions.assertTrue(completedPage.isLoaded());
 
 
         allPage.open();
@@ -171,10 +171,10 @@ public class NavigationTest {
 
         // TODO:
         //      QUESTION:
-        //               should the open return an AllToDosPage object?
+        //              - Should the open return an AllToDosPage object?
         //      EXERCISE:
-        //              try it and see if you like that approach.
-        //              when might that not work?
+        //             - Try it and see if you like that approach.
+        //               when might that not work?
 
         AllToDosPage allPage = new AllToDosPage(driver, todoMVCSite);
         allPage.waitUntilLoaded();
@@ -185,47 +185,45 @@ public class NavigationTest {
 
         // TODO:
         //      QUESTION:
-        //              I only implemented this 'return a page object' in one method.
-        //              Is this a good approach?
-        //              When would returning a page object from a method not be good?
+        //             - I only implemented this 'return a page object' in one method.
+        //             - Is this a useful approach?
+        //             - When would returning a page object from a method not be appropriate?
         //      EXERCISE:
-        //              Experiment with returning page objects from methods and
-        //              decide if it is good or not.
-        //              What would happen if multiple page objects can be returned from
-        //              an action?
-        //              e.g. login("username","password") might login and go to app
-        //              or might fail and leave us at the login page.
+        //             - Experiment with returning page objects from methods and
+        //               decide if it is appropriate or not.
+        //             - What would happen if multiple page objects can be returned from
+        //               an action?
+        //               e.g. login("username","password") might login and go to app
+        //               or might fail and leave us at the login page.
     }
 
 
     // TODO:
     //      EXERCISE:
-    //               create a new test which navigates to the different pages but
-    //               instead of using the 'open' method on the Page Object, create a
-    //               TodoMVCNavigator object with methods like:
-    //               openAllFilterPage(), openCompletedFilterPage()
-    //               i.e. an object with responsibility for navigating to pages
-    //               you will have to decide if these methods should return page objects or not
+    //              - Create a new test which navigates to the different pages but
+    //                instead of using the 'open' method on the Page Object, create a
+    //                TodoMVCNavigator object with methods like:
+    //                openAllFilterPage(), openCompletedFilterPage()
+    //                i.e. an object with responsibility for navigating to pages
+    //              - You will have to decide if these methods should return page objects or not
 
     // TODO:
     //      QUESTION:
-    //               would it be useful to have the TodoMVCNavigator object know how to
-    //               navigate as a user navigates?
-    //               e.g. navigateToAllFilterPage() would click on the 'all' filter link
-    //               and return an AllFilterPage
-    //               what would happen in a more complicated application?
-    //               is this an idea you like or not?
+    //              - Would it be useful to have the TodoMVCNavigator object know how to
+    //                navigate as a user navigates?
+    //                e.g. navigateToAllFilterPage() would click on the 'all' filter link
+    //                    and return an AllFilterPage
+    //              - What would happen in a more complicated application?
+    //              - Is this an idea you like or not?
     //      EXERCISE:
-    //               experiment with this and see if it works for you.
+    //              - Experiment with this and see if it works for you.
 
 
-    /*
-        TODO:
-            EXERCISE:
-                There is a TodoMVCNav object in this package.
-                Try and use that in a test and see if an enum based approach
-                Helps readability and maintenance.
-     */
+//    TODO:
+//        EXERCISE:
+//            - There is a TodoMVCNav object in this package.
+//            - Try and use that in a test and see if an enum based approach
+//              helps readability and maintenance.
 
     @AfterEach
     public void teardown(){

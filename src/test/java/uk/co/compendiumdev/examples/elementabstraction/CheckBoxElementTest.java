@@ -37,16 +37,19 @@ public class CheckBoxElementTest {
         Assertions.assertEquals( 0 , getCountOfCompletedItems());
 
         // TODO:
-        //       EXERCISE: the next 3 lines mean - mark Item Active
-        //       - refactor the next 3 lines into a local markItemCompleted(int) method
+        //       EXERCISE:
+        //           - the next 3 lines of code mean "mark Item Completed"
+        //           - refactor the next 3 lines into a local markItemCompleted(int) method
         WebElement todoListItem1 = getCheckboxWebElementAt(1);
         CheckboxHTMLElement checkBox = new CheckboxHTMLElement(todoListItem1);
         checkBox.check();
 
         Assertions.assertEquals(1, getCountOfCompletedItems());
 
-        // Exercise: the next 3 lines mean - mark Item Active
-        // - refactor the next 3 lines into a local markItemActive(int) method
+        // TODO:
+        //    Exercise:
+        //        - the next 3 lines of code mean "mark Item Active"
+        //        - refactor the next 3 lines into a local markItemActive(int) method
         WebElement todoListItem = getCheckboxWebElementAt(1);
         checkBox = new CheckboxHTMLElement(todoListItem);
         checkBox.uncheck();
@@ -74,28 +77,26 @@ public class CheckBoxElementTest {
 
         // TODO:
         //      EXERCISE:
-        //          The vanillajs implementation does not mark the checkbox
-        //          as checked, can you make this selector more universal
-        //          and apply to more implementations.
-        //          In vanillajs the li is given a class completed 'ul.todo-list li.completed'
-        //          look at other implementations, is there a more generic locator strategy that
-        //          would work for more implementations?
-        //          If so, change the code and run the tests on different browsers.
-        //          You may need to change other classes in the code to use your new selector strategy.
+        //          - The vanillajs implementation does not mark the checkbox
+        //            as checked, can you make this selector more universal
+        //            and apply to more implementations.
+        //          - In vanillajs the li is given a class completed 'ul.todo-list li.completed'
+        //            look at other implementations, is there a more generic locator strategy that
+        //            would work for more implementations?
+        //          - If so, change the code and run the tests on different browsers.
+        //          - You may need to change other classes in the code to use your new selector strategy.
     }
 
     // TODO:
-    //       EXERCISE: Convert this test to use a page object
-
-    // - optional - should the markItemActive be refactored into a page object?
-    // - optional - should the markItemCompleted be refactored into a page object?
-    // - optional - should the markItemCompleted/Active be refactored into a Todo object?
-
-    // - question - should the CheckBoxHTMLElement implement a CheckBox interface?
-    //   would that help? if it would help should we create that now or later?
-
-    // - question - CheckboxHTMLElement implements WrapsElement
-    //   does that help us? are there any risks to doing that?
+    //       EXERCISE:
+    //          - Convert this test to use a page object
+    //          - optional - should the markItemActive be refactored into a page object?
+    //          - optional - should the markItemCompleted be refactored into a page object?
+    //          - optional - should the markItemCompleted/Active be refactored into a To do object?
+    //          - question - should the CheckBoxHTMLElement implement a CheckBox interface?
+    //             - would that help? if it would help should we create that now or later?
+    //          - question - CheckboxHTMLElement implements WrapsElement
+    //             - does that help us? are there any risks to doing that?
 
     @AfterEach
     public void teardown(){
@@ -104,6 +105,7 @@ public class CheckBoxElementTest {
 
     // TODO:
     //       EXERCISE:
-    //                  The Selenium WebDriver classes have a Select class which is an element abstraction.
-    //                  Have a look at the source code for this and see if it gives you additional ideas.
+    //               The Selenium WebDriver classes have a Select class which is an element abstraction.
+    //               Have a look at the source code for this and see if it gives you additional ideas
+    //               For how to create Element Abstractions.
 }

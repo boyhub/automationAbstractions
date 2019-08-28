@@ -24,11 +24,10 @@ public class TodoMVCPageFactoryTest {
 
     // TODO:
     //      EXERCISE:
-    //                  use the intellij compare functionality to compare this
-    //                  test with the TodoMVCPojoTest. Only the page objects
-    //                  should be functionally different. Then compare the page
-    //                  objects themselves
-
+    //                - Use the intellij compare functionality to compare this
+    //                  test with the TodoMVCPojoTest
+    //                - Only the page objects should be functionally different
+    //                - Then compare the page objects themselves
 
     @BeforeEach
     public void setup(){
@@ -39,17 +38,21 @@ public class TodoMVCPageFactoryTest {
         todoMVC.open();
     }
 
-    // TODO: convert to use JUnit asserts not hamcrest to keep cognitive load lower
-
     @Test
     public void canCreateAToDo(){
 
-        // Question: should the page object have a count todos method?
+        // TODO:
+        //      QUESTION:
+        //           should the page object have a count todos method?
         //           rather than return a list of WebElements?
         int originalNumberOfTodos = todoMVC.getTodoItems().size();
 
-        // Question: should the ENTER be handled by the page object?
-        // Question: should the page object have a createTodo method?
+        // TODO:
+        //      QUESTION:
+        //          should the ENTER be handled by the page object?
+        // TODO:
+        //      QUESTION:
+        //          should the page object have a createTodo method?
         todoMVC.typeIntoNewToDo("New Task" + Keys.ENTER);
 
         int newToDos = todoMVC.getTodoItems().size();
@@ -57,8 +60,10 @@ public class TodoMVCPageFactoryTest {
         Assertions.assertTrue(newToDos > originalNumberOfTodos);
         Assertions.assertEquals(originalNumberOfTodos + 1, newToDos);
 
-        // Question: Should getToDoText be zero indexed?
-        //           Does that make the test easier to understand?
+        // TODO:
+        //      QUESTION:
+        //           Should getToDoText be zero indexed?
+        //           - Does that make the test easier to understand?
         Assertions.assertEquals("New Task", todoMVC.getToDoText(newToDos-1));
     }
 
@@ -73,9 +78,11 @@ public class TodoMVCPageFactoryTest {
 
         Assertions.assertEquals(originalNumberOfTodos + 1, addedATodoCount);
 
-        // Question: Should delete be zero indexed?
-        //           Is that how people think?
-        //           Does that make the test easier to understand?
+        // TODO:
+        //      QUESTION:
+        //           Should delete be zero indexed?
+        //           - Is that how people think?
+        //           - Does that make the test easier to understand?
         todoMVC.deleteTodoItem(addedATodoCount-1);
 
         int afterDeleteCount = todoMVC.getTodoItems().size();
@@ -93,7 +100,9 @@ public class TodoMVCPageFactoryTest {
 
         Assertions.assertEquals(originalNumberOfTodos + 1, addedATodoCount);
 
-        // Question: should editItem be zero indexed?
+        // TODO:
+        //      QUESTION:
+        //          should editItem be zero indexed?
         todoMVC.editItem(addedATodoCount-1, "Edited Todo");
 
         int afterEditCount = todoMVC.getTodoItems().size();

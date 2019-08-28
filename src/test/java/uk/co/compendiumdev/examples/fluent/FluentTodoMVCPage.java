@@ -147,19 +147,19 @@ public class FluentTodoMVCPage {
 
 // TODO:
 //      QUESTION:
-//              Would any of the methods be improved by making them void?
+//             - Would any of the methods be improved by making them void?
 //      EXERCISE:
-//              If so, make the changes and see if it is improved.
+//             - If so, make the changes and see if it is improved.
 
 
 // TODO:
 //      QUESTION:
-//              The page object only returns this or primitives, would
-//              there be any issues if we returned other Page objects or
-//              abstraction classes?
+//             - The page object only returns this or primitives, would
+//               there be any issues if we returned other Page objects or
+//               abstraction classes?
 //      EXERCISE:
-//              refactor the page so that the clickFilter* methods are in a
-//              FooterFilters class and the page returns a new FooterFilters object
-//              from a filters() method.
-//              Does this help or hinder the fluent interface?
+//             - refactor the page so that the clickFilter* methods are in a
+//               FooterFilters class and the page returns a new FooterFilters object
+//               from a filters() method.
+//             - Does this help or hinder the fluent interface?
 

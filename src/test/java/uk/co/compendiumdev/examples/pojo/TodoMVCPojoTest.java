@@ -89,13 +89,12 @@ public class TodoMVCPojoTest {
         Assertions.assertEquals("Edited Todo", todoMVC.getToDoText(afterEditCount-1));
     }
 
-    /*
-        TODO:
-                QUESTION:
-                            Is this test necessary?
-                            Because we have seen that we can create, edit and delete to do items.
-                            Why would we need a scenario test?
-     */
+
+//    TODO:
+//        QUESTION:
+//            - Is this test necessary?
+//            - Because we have seen that we can create, edit and delete to do items.
+//            - Why would we need a scenario test?
     @Test
     public void scenarioTest(){
 

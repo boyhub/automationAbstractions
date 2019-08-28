@@ -121,14 +121,14 @@ public class DomainTest {
         Assertions.assertEquals(1, todoMVC.getTodoItems().size());
     }
 
-    /* TODO
-            EXERCISE - expand the User object so that they can
-                       editTodoAt(position) and
-                       markTodoAsCompleted(position) and
-                       markTodoAsNotDone(position) and
-                       countNumberOfTodos()
-                       and use these methods in tests
-    */
+//     TODO:
+//        EXERCISE:
+//             - expand the User object so that they can
+//             - editTodoAt(position) and
+//             - markTodoAsCompleted(position) and
+//             - markTodoAsNotDone(position) and
+//             - countNumberOfTodos()
+//             - and use these methods in tests
 
     @Test
     public void createMultipleTodosWithAnActionsObject(){
@@ -161,37 +161,34 @@ public class DomainTest {
 
         Assertions.assertEquals(14, todoMVC.getTodoItems().size());
 
-        /*
-            TODO:
-                    QUESTION:
-                                What other actions might be appropriate that don't
-                                'belong' on another domain object? e.g. getLastTodo
-                                deleteLastXTodos? deleteLastTodo? renameAllTodos?
-                    EXERCISE:
-                                Implement some 'action' level methods and use them in
-                                a test.
-         */
+//    TODO:
+//        QUESTION:
+//              - What other actions might be appropriate that don't
+//                'belong' on another domain object? e.g. getLastTodo
+//                deleteLastXTodos? deleteLastTodo? renameAllTodos?
+//            EXERCISE:
+//               - Implement some 'action' level methods and use them in
+//                 a test.
 
     }
 
-/*
-    TODO:
-        QUESTION - should a User have a performsAction() method
-                    which returns a TodoActions object?
-                    That might make tests easier to write
-                    with fewer lines of code.
-                    What are the pros and cons?
-        EXERCISE -
-                    Try it and see?
- */
+//    TODO:
+//        QUESTION:
+//              - should a User have a performsAction() method
+//                which returns a TodoActions object?
+//                That might make tests easier to write
+//                with fewer lines of code.
+//              - What are the pros and cons?
+//        EXERCISE:
+//              - Try it and see?
 
-/*
-EXERCISE - combine the TodoList and the User so that the User uses and maintains
-a todolist in its actions e.g. whena user creates a to do it adds it to the page
-and keeps track of it in a todolist object. This user can then be used to model
-the expectations, as well as taking actions e.g. user.expectedNumberOfTodos(),
-user.countNumberOfTodos()
- */
+//    TODO:
+//        EXERCISE:
+//            - combine the TodoList and the User so that the User uses and maintains
+//              a todolist in its actions e.g. whena user creates a to do it adds it to the page
+//              and keeps track of it in a todolist object. This user can then be used to model
+//              the expectations, as well as taking actions e.g. user.expectedNumberOfTodos(),
+//              user.countNumberOfTodos()
 
 
 

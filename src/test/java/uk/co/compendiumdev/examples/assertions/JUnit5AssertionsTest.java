@@ -44,16 +44,14 @@ public class JUnit5AssertionsTest {
     @Test
     public void JUnit5AssertionsExample(){
 
-        /*
-            TODO:
-                EXERCISE:
-                    My personal preference is to use Assertions.
-                    But some people like to statically include the
-                    assertion methods.
-                    Try changing the code so that assertEquals
-                    is statically imported rather than Assertions.
-                    Does that impact readability?
-         */
+//    TODO:
+//        EXERCISE:
+//           - My personal preference is to use Assertions.
+//             But some people like to statically include the
+//             assertion methods.
+//           - Try changing the code so that assertEquals
+//             is statically imported rather than Assertions.
+//           - Does that impact readability?
 
         todoMVC.typeIntoNewToDo("Edit Me" + Keys.ENTER);
 
@@ -70,13 +68,11 @@ public class JUnit5AssertionsTest {
         Assertions.assertEquals(0, todoMVC.getTodoItems().size());
     }
 
-    /*
-    TODO:
-        EXERCISE:
-           JUnit 5 assertions can take a text string used when the assert fails
-           Add a text string to describe the assertions, does that help readability?
-           Change the assertions so they fail, does the test string help understand the failure?
-     */
+//    TODO:
+//        EXERCISE:
+//           - JUnit 5 assertions can take a text string used when the assert fails
+//           - Add a text string to describe the assertions, does that help readability?
+//           - Change the assertions so they fail, does the test string help understand the failure?
 
 
     @AfterEach

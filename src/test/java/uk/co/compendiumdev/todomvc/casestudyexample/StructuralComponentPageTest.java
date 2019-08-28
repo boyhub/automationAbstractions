@@ -27,18 +27,18 @@ public class StructuralComponentPageTest {
         This package simulates working in an existing code base that is using abstractions, but
         the abstractions may not be as good as they could be, or may not fit how you
         would want to model the application.
+    */
 
-        TODO:
-            EXERCISE:
-               - Run the tests and make sure you understand the implementation.
-               - Choose any of the exercises below in any order
-               - Run this test on different browsers by amending the ExecuteDriver
-                   - you may need to amend the page object for additional synchronisation and minor changes
-               - Create more tests using the existing abstraction layers.
-               - Create a 'functional page that delegates to the Page Object but makes it a little easier to work with.
-               - Create a User Domain object that delegates to the Page Object.
-               - Expand and refactor this however you want to.
-     */
+//    TODO:
+//        EXERCISE:
+//           - Run the tests and make sure you understand the implementation.
+//           - Choose any of the exercises below in any order
+//           - Run this test on different browsers by amending the ExecuteDriver
+//               - you may need to amend the page object for additional synchronisation and minor changes
+//           - Create more tests using the existing abstraction layers.
+//           - Create a 'functional page that delegates to the Page Object but makes it a little easier to work with.
+//           - Create a User Domain object that delegates to the Page Object.
+//           - Expand and refactor this however you want to.
 
 
     @BeforeEach

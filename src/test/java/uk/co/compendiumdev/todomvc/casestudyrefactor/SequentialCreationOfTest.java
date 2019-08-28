@@ -16,18 +16,19 @@ import static org.hamcrest.Matchers.*;
         page object but no real thought to synchronisation or more efficient modelling
         the page object is not as generic as it could be, and is unlikely to fit how you
         would want to model the application.
+*/
 
-    TODO:
-        EXERCISES:
-            - This set of tests use a page object that is ready to be refactored.
-            - The tests use Hamcrest as their assertion library, feel free to change this.
-            - Review the tests and add more tests if you identify areas of functionality
-              in the application that have not been tested.
-            - Change the page object to use components
-            - run the test on different browsers and add more synchronisation to the abstractions
-            - refactor this to any of the abstraction patterns that we have discussed
+//    TODO:
+//        EXERCISES:
+//            - This set of tests use a page object that is ready to be refactored.
+//            - The tests use Hamcrest as their assertion library, feel free to change this.
+//            - Review the tests and add more tests if you identify areas of functionality
+//              in the application that have not been tested.
+//            - Change the page object to use components
+//            - run the test on different browsers and add more synchronisation to the abstractions
+//            - refactor this to any of the abstraction patterns that we have discussed
 
- */
+
 public class SequentialCreationOfTest {
 
     private WebDriver driver;

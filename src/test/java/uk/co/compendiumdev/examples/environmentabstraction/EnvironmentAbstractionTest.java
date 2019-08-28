@@ -37,9 +37,10 @@ public class EnvironmentAbstractionTest {
         ExecutionDriver manager = new ExecutionDriver();
 
         // TODO:
-        //       EXERCISE : change the code in the TodoMVCEnvironment to point
-        //                  to a different environment or instantiation of TodoMVC
-        //                  some urls are listed in the class
+        //       EXERCISE:
+        //         - change the code in the TodoMVCEnvironment to point
+        //           to a different environment or instantiation of TodoMVC
+        //           some urls are listed in the class
         WebDriver driver = manager.get();
 
         final TodoMVCEnvironment todoMVCSite = new TodoMVCEnvironment();
@@ -52,11 +53,17 @@ public class EnvironmentAbstractionTest {
     }
 
     /*
-
         Because these classes often contain sensitive data they are likely to:
 
         - configure themselves from System Properties e.g. JVM -D parameters
         - configure themselves from Environment Variables
-
      */
+
+    // TODO:
+    //      EXERCISE:
+    //          - implement some additional configuration approaches e.g.
+    //              - constructor parameters
+    //              - system properties
+    //              - environment variables
+    //              - resource files
 }

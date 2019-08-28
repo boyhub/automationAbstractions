@@ -76,9 +76,10 @@ public class TodoMVCPojoPage {
 
         editField.click();
 
-        // TODO:
-        //       EXERCISE: refactor this into a 'cleared' method on EnsureWebElementIs
-        //       and use the EnsureWebElementIs in the page object
+//    TODO:
+//       EXERCISE:
+//          - refactor this into a 'clear' method on EnsureWebElementIs
+//            and use the EnsureWebElementIs in the page object
         // clear causes the javascript on the field to trigger and close the input
         // perhaps it loses focus? Use JS instead to empty field
         // editField.clear();

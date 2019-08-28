@@ -54,23 +54,23 @@ public class LocalStorageTest {
         keys = storage.getItem(storage_namespace).split(",");
         int newSize = keys.length;
 
-        /* TODO:
-                COMMENT:
-                    Most of the tests use JUnit 5 Assertions
-                    Hamcrest, might make this test more readable e.g.
-                         assertThat(newSize, greaterThan(initialSize));
-                    instead of
-                        Assertions.assertTrue(newSize > initialSize);
-                    and the assertTrue and assertEquals might read more
-                    readable if using assertThat e.g.
-                        assertThat(foundit, is(true));
-                        assertThat(todoStorage.length(), is(0L));
-                EXERCISE:
-                    Convert this test to use Hamcrest for assertions
-                    if you like it then experiment with Hamcrest in
-                    other tests. You can learn more about hamcrest
-                    at http://hamcrest.org/
-        */
+//    TODO:
+//        EXERCISE:
+//           - Convert this test to use Hamcrest for assertions
+//            if you like it then experiment with Hamcrest in
+//            other tests.
+//           - You can learn more about hamcrest
+//            at http://hamcrest.org/
+//        EXERCISE COMMENT:
+//            Most of the tests use JUnit 5 Assertions
+//            Hamcrest, might make this test more readable e.g.
+//                 assertThat(newSize, greaterThan(initialSize));
+//            instead of
+//                Assertions.assertTrue(newSize > initialSize);
+//            and the assertTrue and assertEquals might read more
+//            readable if using assertThat e.g.
+//                assertThat(foundit, is(true));
+//                assertThat(todoStorage.length(), is(0L));
         Assertions.assertTrue(newSize > initialSize);
 
         boolean foundit = false;
@@ -115,15 +115,13 @@ public class LocalStorageTest {
         ExecutionDriver.closeDriver(driver);
     }
 
-    /*
-        TODO:
-            EXERCISE:
-                The different implementations of todomvc use different local storage implementations
-                Analyse a few of the implementations
-                How would you build an abstraction to handle multiple implementations?
-                    - would you create an interface?
-                    - would you have a Factory class?
-                Create an implementation for a different implementat e.g. vanillajs
-     */
+//    TODO:
+//        EXERCISE:
+//            The different implementations of todomvc use different local storage implementations
+//            - Analyse a few of the implementations
+//            - How would you build an abstraction to handle multiple implementations?
+//                - would you create an interface?
+//                - would you have a Factory class?
+//            - Create an implementation for a different implementat e.g. vanillajs
 
 }

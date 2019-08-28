@@ -64,19 +64,16 @@ public class HamcrestAssertionsTest {
                     is(equalTo(0)));
     }
 
-    /*
-        TODO:
-            EXERCISE:
-                The hamcrest messages when assertions fail are supposed to be readable.
-                Change the code so that the assertions fail.
-                Are the error messages readable?
-     */
-    /*
-        TODO:
-            EXERCISE:
-                Add more tests, or change the test code so that you can experiment
-                with more of the matchers listed at http://hamcrest.org
-     */
+//    TODO:
+//        EXERCISE:
+//            - The hamcrest messages when assertions fail are supposed to be readable.
+//            - Change the code so that the assertions fail.
+//            - Are the error messages readable?
+
+//    TODO:
+//        EXERCISE:
+//            - Add more tests, or change the test code so that you can experiment
+//              with more of the matchers listed at http://hamcrest.org
 
 
     @Test

@@ -5,19 +5,18 @@ import org.junit.jupiter.api.Test;
 
 public class CoverageTest {
 
-    /* TODO:
-            QUESTION:
-                        Should test code have code coverage applied to it?
-                        Should abstraction layers have code coverage applied to it?
-            EXERCISE:
-                        Run this test with code coverage and make sure it has 100%
-                        class, method and line coverage.
-                        Then run all the tests with code coverage (ensuring that the
-                        test code is also measured, and expand the tests to use the
-                        uncovered methods (or delete the unused code).)
-                        Fix any bugs in the abstraction layers that you find when you
-                        use any of the 'new' abstraction layer code.
-     */
+//     TODO:
+//            QUESTION:
+//                       - Should test code have code coverage applied to it?
+//                       - Should abstraction layers have code coverage applied to it?
+//            EXERCISE:
+//                       - Run this test with code coverage and make sure it has 100%
+//                         class, method and line coverage.
+//                       - Then run all the tests with code coverage (ensuring that the
+//                         test code is also measured, and expand the tests to use the
+//                         uncovered methods (or delete the unused code).)
+//                       - Fix any bugs in the abstraction layers that you find when you
+//                         use any of the 'new' abstraction layer code.
 
     @Test
     public void thisTestUsesTestClasses(){
@@ -26,9 +25,6 @@ public class CoverageTest {
         // In IntelliJ Run Configurations, you can edit them in the coverage
         // tab to include the test code
         // https://www.jetbrains.com/help/idea/configuring-code-coverage-measurement.html
-
-        // todo: write a test that uses code in here inner class and external class that would
-        // be ignored until the coverage tool is used
 
         Assert.assertTrue(MyInnerClass.getTrue());
         Assert.assertTrue(MyOuterClass.getTrue());

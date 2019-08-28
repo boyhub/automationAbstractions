@@ -12,12 +12,10 @@ import static org.assertj.core.api.BDDAssertions.*;
 
 public class AssertJAssertionsTest {
 
-        /*
-        TODO:
-            EXERCISE:
-                Compare the AssertJ, Hamcrest and JUnit 5 tests to see which
-                is more readable and then use them to see which is more usable.
-     */
+//    TODO:
+//        EXERCISE:
+//           - Compare the AssertJ, Hamcrest and JUnit 5 tests to see which
+//             is more readable and then use them to see which is more usable.
 
     /*
         The different assertion approaches can make a difference to the readability
@@ -90,21 +88,12 @@ public class AssertJAssertionsTest {
         then(todoMVC.getTodoItems().size()).isEqualTo(0);
     }
 
-    /*
-        TODO:
-            EXERCISE:
-                The AssertJ messages when assertions fail are supposed to be readable.
-                Change the code so that the assertions fail.
-                Are the error messages readable?
-     */
-    /*
-        TODO:
-            EXERCISE:
-                Add more tests, or change the test code so that you can experiment
-                with more of the assertion approaches listed at
-                https://assertj.github.io/doc/#get-assertj-core
-                https://assertj.github.io/doc/#assertj-core-assertions-guide
-     */
+//    TODO:
+//        EXERCISE:
+//           - Add more tests, or change the test code so that you can experiment
+//             with more of the assertion approaches listed at
+//              - https://assertj.github.io/doc/#get-assertj-core
+//              - https://assertj.github.io/doc/#assertj-core-assertions-guide
 
 
     @AfterEach

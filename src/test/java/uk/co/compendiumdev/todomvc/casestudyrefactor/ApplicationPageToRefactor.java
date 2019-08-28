@@ -12,25 +12,23 @@ import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 import java.util.List;
 
-/*
-    TODO:
-        EXERCISE:
-            This page has been created organically as the SequentialCreationOfTest
-            was created.
-            It is a mix of functional, structural methods.
-            It isn't very generic e.g.
-               - it has an editLastItem method rather than an EditItem method
-               - it has a deleteLastItem method rather than an EditItem method
-            - review the page object and identify changes you would make
-            - implement your changes
-            - refactor this page object to components
-            - wrap the page object to create a functional page
-            - wrap the page object to create a User object
-            - what else would you change in the test or the page object?
-            - create some scenario tests, does the page object have enough synchronisation to support it
-            - run the test on different browsers, is this page object good enough to handle that?
+//    TODO:
+//        EXERCISE:
+//            This page has been created organically as the SequentialCreationOfTest
+//            was created.
+//            It is a mix of functional, structural methods.
+//            It isn't very generic e.g.
+//               - it has an editLastItem method rather than an EditItem method
+//               - it has a deleteLastItem method rather than an EditItem method
+//            - review the page object and identify changes you would make
+//            - implement your changes
+//            - refactor this page object to components
+//            - wrap the page object to create a functional page
+//            - wrap the page object to create a User object
+//            - what else would you change in the test or the page object?
+//            - create some scenario tests, does the page object have enough synchronisation to support it
+//            - run the test on different browsers, is this page object good enough to handle that?
 
- */
 public class ApplicationPageToRefactor {
     private final WebDriver driver;
     private final TodoMVCSite todoMVCSite;

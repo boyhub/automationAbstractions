@@ -66,89 +66,85 @@ public class ComponentAbstractionTest {
 
     }
 
-    /*
-        TODO:
-            EXERCISE:
-                Review the components ItemsLeftCount, FooterFilters, VisibleToDoEntry
-                Make sure you understand them.
-     */
+//    TODO:
+//        EXERCISE:
+//            - Review the components ItemsLeftCount, FooterFilters, VisibleToDoEntry
+//            - Make sure you understand them.
 
 
-    // TODO:
-    //      EXERCISE:
-    //                refactor this method into a new component
-    //                the component should be called VisibleTodoList
-    //                use the component in the test
+//    TODO:
+//      EXERCISE:
+//            refactor this method into a new component
+//            - the component should be called VisibleTodoList
+//            - use the component in the test
     public int countVisibleTodos(){
         return driver.findElements(By.cssSelector("ul.todo-list li:not(.hidden)")).size();
     }
 
-    // TODO:
-    //      EXERCISE:
-    //                the VisibleTodoList component should return a VisibleToDoEntry
-    //                when a method named getToDoAt(int position)
-    //                did you also remove the static method from VisibleToDoEntry?
-    //                or did you wrap that method and use it?
+//   TODO:
+//      EXERCISE:
+//              - the VisibleTodoList component should return a VisibleToDoEntry
+//                from a method named getToDoAt(int position) - create this method
+//              - did you also remove the static method from VisibleToDoEntry?
+//                or did you wrap that method and use it?
 
 
-    // TODO:
-    //      EXERCISE:
-    //                refactor the ComponentPojoPage page object
-    //                to move the method editItem into the VisibleTodoList
-    //                create an @Test method in this class which uses the editItem
+//   TODO:
+//      EXERCISE:
+//               - refactor the ComponentPojoPage page object
+//                 to move the method editItem into the VisibleTodoList
+//               - create an @Test method in this class which uses the editItem
 
-    // TODO:
-    //      EXERCISE:
-    //                refactor the ComponentPojoPage page object
-    //                to move the method deleteTodoItem into the VisibleTodoList
-    //                create an @Test method in this class which uses the deleteTodoItem
+//     TODO:
+//          EXERCISE:
+//               - refactor the ComponentPojoPage page object
+//                 to move the method deleteTodoItem into the VisibleTodoList
+//               - create an @Test method in this class which uses the deleteTodoItem
 
-    // TODO:
-    //      QUESTION:
-    //                should the ComponentPojoPage still have the methods
-    //                editItem and deleteTodoItem?
-    //      EXERCISE:
-    //                If so, then re-implement them but use
-    //                the VisibleTodoList in the methods.
-    //                e.g. something like...
-    //                public void editTodoItem(int item){
-    //                      new VisibleTodoList(driver).editTodoItem(item);
-    //                }
+//     TODO:
+//          QUESTION:
+//                should the ComponentPojoPage still have the methods
+//                editItem and deleteTodoItem?
+//          EXERCISE:
+//                - If so, then re-implement them but use
+//                  the VisibleTodoList in the methods.
+//                  e.g. something like...
+//                    public void editTodoItem(int item){
+//                          new VisibleTodoList(driver).editTodoItem(item);
+//                    }
 
-    // TODO:
-    //      QUESTION:
-    //                should the VisibleTodoList have the methods
-    //                editItem and deleteTodoItem?
-    //                or should we rely on the getToDoAt(position) method
-    //                and then use the edit and delete methods on the visibleToDoItem?
-    //      EXERCISE:
-    //                try it and see
+//     TODO:
+//          QUESTION:
+//                   - should the VisibleTodoList have the methods
+//                    editItem and deleteTodoItem?
+//                   - or should we rely on the getToDoAt(position) method
+//                    and then use the edit and delete methods on the visibleToDoItem?
+//          EXERCISE:
+//                   - try it and see
 
-    // TODO:
-    //      QUESTION:
-    //                Should the ComponentPojoPage implement a filters()
-    //                method which returns a FooterFilters object?
-    //                  e.g. page.filters().active();
-    //                Or should there be a new Footer Component?
-    //                  e.g. page.footer().itemsLeftCount();
-    //                  e.g. page.footer().clickActiveFilter();
-    //      EXERCISE:
-    //                Decide, and then implement.
-    //                Or find a better way to model the footer.
+//     TODO:
+//          QUESTION:
+//                   - Should the ComponentPojoPage implement a filters()
+//                    method which returns a FooterFilters object?
+//                      e.g. page.filters().active();
+//                    Or should there be a new Footer Component?
+//                      e.g. page.footer().itemsLeftCount();
+//                      e.g. page.footer().clickActiveFilter();
+//          EXERCISE:
+//                  - Decide, and then implement.
+//                  - Or find a better way to model the footer.
 
 
-    /*
-   TODO:
-       QUESTION:
-           What other components would you create?
-       EXERCISE:
-           Look at the application under test.
-           Model it as a diagram, or list of components to design
-           a possible set of components that you would create to model
-           the application and use in the tests.
-           IF you create any components that are not here then try and
-           implement some of them and use them in some tests.
-    */
+//   TODO:
+//       QUESTION:
+//           What other components would you create?
+//       EXERCISE:
+//          - Look at the application under test.
+//          - Model it as a diagram, or list of components to design
+//            a possible set of components that you would create to model
+//            the application and use in the tests.
+//          - If you create any components that are not here then try and
+//            implement some of them and use them in some tests.
 
     @AfterEach
     public void teardown(){

@@ -32,16 +32,16 @@ public class ActiveToDosPage{
 
 // TODO:
 //      QUESTION:
-//               The way that these pages are written each of the pages has
+//             - The way that these pages are written each of the pages has
 //               duplicated the methods clickOnAllFilter, clickOnActiveFilter etc.
-//               How could we handle that?
+//             - How could we handle that?
 //               e.g. a FilterPageObject that they all extend? an abstract class?
 //                    an interface?
 //                    or not have the methods and simply have a filters() method
 //                    which returns new FooterFilters(driver)?
 //       EXERCISE:
-//              Choose an approach and implement it for all three pages:
-//              ActiveToDosPage, AllToDosPage, CompletedToDosPage
+//             - Choose an approach and implement it for all three pages:
+//               ActiveToDosPage, AllToDosPage, CompletedToDosPage
 
     public void clickOnAllFilter() {
         new FooterFilters(driver).all();

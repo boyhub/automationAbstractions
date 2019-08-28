@@ -14,9 +14,9 @@ public class TodoMVCPageFactoryPage {
 
     // TODO:
     //      EXERCISE:
-    //               Compare this page object with the TODOMVCPojoPage
-    //               Aside from the annotations, what else is different
-    //               Between the pages?
+    //              - Compare this page object with the TODOMVCPojoPage
+    //              - Aside from the annotations, what else is different
+    //                between the pages?
 
     @FindBy(how = How.CSS, using="ul.todo-list li div.view")
     List<WebElement> todoItems;
@@ -39,12 +39,12 @@ public class TodoMVCPageFactoryPage {
 
         // TODO:
         //      EXERCISE:
-        //                  Instead of using the initElements above,
+        //              -   Instead of using the initElements above,
         //                  Uncomment the line below,
         //                  and comment out all the WebDriverWait calls,
-        //                  The AjaxElementLocatorFactory is supposed to synchronise on dynamic element creation
+        //              -   The AjaxElementLocatorFactory is supposed to synchronise on dynamic element creation
         //                  Does the test work? If not, why not?
-        //                  Is it as fast? If not, why not?
+        //              -   Is it as fast? If not, why not?
         //PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10),  this);
 
         // PageFactory code often has fewer waits,
@@ -106,8 +106,9 @@ public class TodoMVCPageFactoryPage {
         editField.click();
 
         // TODO:
-        //       EXERCISE: refactor this into a 'cleared' method on EnsureWebElementIs
-        //       and use the EnsureWebElementIs in the page object
+        //       EXERCISE:
+        //           - refactor this into a 'cleared' method on EnsureWebElementIs
+        //             and use the EnsureWebElementIs in the page object
         // clear causes the javascript on the field to trigger and close the input
         // perhaps it loses focus? Use JS instead to empty field
         // editField.clear();

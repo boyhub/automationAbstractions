@@ -28,8 +28,8 @@ public class FluentExampleTest {
 
         // TODO:
         //      QUESTION:
-        //                  Does the fluent interface make the following code
-        //                  easier to understand?
+        //               - Does the fluent interface make the following code
+        //                 easier to understand?
         page.
             open().
             and().
@@ -42,8 +42,8 @@ public class FluentExampleTest {
 
         // TODO:
         //      QUESTION:
-        //                  Does the fluent interface make the assertion code
-        //                  easier to understand?
+        //              - Does the fluent interface make the assertion code
+        //                easier to understand?
         Assertions.assertEquals(3,page.clickFilterActive().
                                             and().countVisibleTodos());
 
@@ -57,14 +57,15 @@ public class FluentExampleTest {
 
     // TODO:
     //      EXERCISE:
-    //               Build more tests using the FluentTodoMVCPage
-    //               Add additional methods where appropriate.
+    //              - Build more tests using the FluentTodoMVCPage
+    //              - Add additional methods where appropriate.
 
     // TODO:
     //      EXERCISE:
-    //               Think about the pros and cons of a fluent interface.
-    //               When would it work well?
-    //               When would it not work well?
+    //              - Think about the pros and cons of a fluent interface.
+    //              - When would it work well?
+    //              - When would it not work well?
+    //              - What rules or guidelines would you recommend?
 
 
 

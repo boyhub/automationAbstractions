@@ -37,12 +37,10 @@ public class StructuralVsFunctionalTest {
 
      */
 
-    /*
-        TODO:
-            EXERCISE:
-                Compare the two tests to see the difference in the Structural and
-                Functional Page Abstractions. They both do 'exactly' the same thing.
-     */
+//    TODO:
+//        EXERCISE:
+//            - Compare the two tests to see the difference in the Structural and
+//              Functional Page Abstractions. They both do 'exactly' the same thing.
 
     private WebDriver driver;
     private TodoMVCSite todoMVCSite;
@@ -152,19 +150,17 @@ public class StructuralVsFunctionalTest {
     }
 
 
-    /*
-        TODO:
-            EXERCISE:
-                Create some new tests that exercise the functionality of the application.
-                Expand the Structural or Functional Pages as you do.
-                Remember the Functional page can use the structural page, but probably not
-                the reverse... unless you think that is valid.
-                Suggested things to test:
-                - edit a todo
-                - delete a todo
-                - create a CRUD scenario
-
-     */
+//    TODO:
+//        EXERCISE:
+//            - Create some new tests that exercise the functionality of the application.
+//            - Expand the Structural or Functional Pages as you do.
+//            - Remember the Functional page can use the structural page, but probably not
+//              the reverse... unless you think that is valid.
+//            - Suggested things to test:
+//               - edit a to do
+//               - delete a to do
+//               - create a CRUD scenario (possibly more with different variations)
+//                  i.e. create, then check text, then update, then delete
 
     @AfterEach
     public void teardown(){

@@ -77,7 +77,7 @@ public class WorkaroundTest {
 
     // TODO:
     //      EXERCISE:
-    //              Is the inViewOnThePage method required in current versions
-    //              of WebDriver?
-    //              For all browsers?
+    //             - Is the inViewOnThePage method required in current versions of WebDriver?
+    //             - For all browsers?
+    //             - When could it be useful?
 }

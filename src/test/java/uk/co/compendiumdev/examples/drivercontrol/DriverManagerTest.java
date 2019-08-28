@@ -35,8 +35,9 @@ public class DriverManagerTest {
         TestDriverManager manager = new TestDriverManager();
 
         // TODO:
-        //       EXERCISE : change the code in the ExecutionDriver to open Firefox instead of Chrome
-        //                  the driver is created in the `getUncached` method
+        //       EXERCISE:
+        //          - change the code in the ExecutionDriver to open Firefox instead of Chrome
+        //            the driver is created in the `getUncached` method
         WebDriver driver = manager.get();
 
         final TodoMVCSite todoMVCSite = new TodoMVCSite();
@@ -90,4 +91,9 @@ public class DriverManagerTest {
         It hasn't been maintained for a while but you can see how complicated it can become.
 
      */
+
+    // TODO:
+    //       EXERCISE:
+    //          - implement some of the configuration options described
+    //            e.g. System Properties, environment variables
 }
