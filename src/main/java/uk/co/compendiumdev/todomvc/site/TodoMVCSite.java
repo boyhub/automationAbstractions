@@ -6,15 +6,24 @@ public class TodoMVCSite {
     public String getURL(){
         return "http://todomvc.com/examples/backbone/";
         //return "http://todomvc.com/examples/vanillajs/";
-        // local on mac via virtualHostX
-        //return "http://todomvc.site/architecture-examples/backbone/";
-        // local on pc
-        //return "file:///C:/Users/Alan/Downloads/todomvc-f57e0b773db14f094ef09274af90042f83328412/todomvc-f57e0b773db14f094ef09274af90042f83328412/architecture-examples/backbone/index.html";
+        //return "http://todomvc.com/examples/angularjs/";  // angular will require additional synchronisation
     }
 
     public String getName(){
         return "backbone";
         //return "vanillajs";
+        //return "angularjs";
     }
+
+    // TODO:
+    //  EXERCISE:
+    //      - try to run the tests on different implementations and make changes as required to get the tests working
+    //      - most changes should only need to be made to the abstraction layers
+    //      - and it should be possible to amend the abstraction layers for the new implementation,
+    //        while keeping it running on the previous implementation
+    //      This is the key component to amend to run the tests on different environments.
+    //      Each of the different sites has slightly different issues that need addressing
+    //      The tests have been written to run clean on backbone, and minor changes to the
+    //      code are required for the other identified sites.
 
 }

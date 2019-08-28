@@ -57,6 +57,17 @@ public class ApplicationPageToRefactor {
     }
 
     public void enterNewToDo(String todoTitle) {
+        // TODO:
+        //      EXERCISE:
+        //          angularjs needs more synchronisation because there is a time delay before
+        //          the page and edit form is ready to work with
+        //          where is the best place to add that synchronisation?
+        //          - here, prior to finding the element (or as part of finding the element)
+        //          - or on the page load?
+        //          - or a combination of the two?
+        //          - or some other approach?
+        //          try to make the SequentialCreationOfTest work against the angular implementation by
+        //          changing this page object
         WebElement createTodo = driver.findElement(By.className("new-todo"));
         createTodo.click();
         createTodo.sendKeys(todoTitle);
