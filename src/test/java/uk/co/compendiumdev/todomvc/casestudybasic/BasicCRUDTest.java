@@ -36,6 +36,8 @@ import java.util.List;
 //            - review the tests, are there enough assertions to cover the test effectively?
 //                - if not expand them
 //            - use this as a basis for clean refactoring e.g.
+//            - remove duplicate code and use fields for By variables
+//            - remove other duplicate code by creating classes e.g. filters
 //            - create page objects
 //            - create component objects
 //            - experiment with assertion abstractions
