@@ -16,7 +16,7 @@ public class TodoMVCSite {
     }
 
     // TODO:
-    //  EXERCISE:
+    //    EXERCISE:
     //      - try to run the tests on different implementations and make changes as required to get the tests working
     //      - most changes should only need to be made to the abstraction layers
     //      - and it should be possible to amend the abstraction layers for the new implementation,
@@ -25,5 +25,15 @@ public class TodoMVCSite {
     //      Each of the different sites has slightly different issues that need addressing
     //      The tests have been written to run clean on backbone, and minor changes to the
     //      code are required for the other identified sites.
+
+    // TODO:
+    //    EXERCISE:
+    //     - try some of the other implementations listed on http://todomvc.com/
+    //     - run the tests and identify the changes required
+    //     - implement the changes, and try to keep the existing implementations running
+
+    // TODO:
+    //     EXERCISE:
+    //          - make switching the environment possible via System Properties or Environment Variables
 
 }
