@@ -1,6 +1,5 @@
 package uk.co.compendiumdev.examples.firsttests;
 
-
 import uk.co.compendiumdev.examples.domain.actors.TodoMVCUser;
 import uk.co.compendiumdev.examples.pojo.TodoMVCPojoPage;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
@@ -26,17 +25,11 @@ import static org.hamcrest.Matchers.is;
  */
 public class WithAbstractionTest {
 
-    private WebDriver driver;
-    String siteURL;
-
-    @BeforeEach
-    public void startDriver(){
-        driver = new ExecutionDriver().get();
-        siteURL = new TodoMVCSite().getURL();
-    }
-
     @Test
     public void canCreateAToDo(){
+
+        WebDriver driver = new ExecutionDriver().get();
+
         TodoMVCUser user = new TodoMVCUser(driver, new TodoMVCSite());
 
         user.opensApplication().and().createNewToDo("new task");
@@ -46,10 +39,7 @@ public class WithAbstractionTest {
 
         assertThat(page.getCountOfTodoDoItems(), is(1));
         assertThat(page.isFooterVisible(), is(true));
-    }
 
-    @AfterEach
-    public void stopDriver(){
         ExecutionDriver.closeDriver(driver);
     }
 }

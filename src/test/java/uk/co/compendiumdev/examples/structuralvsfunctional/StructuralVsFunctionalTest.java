@@ -111,7 +111,7 @@ public class StructuralVsFunctionalTest {
             Assertions.assertFalse(page.isFooterVisible());
             Assertions.assertEquals(0, page.getCountInFooter());
             Assertions.fail("Footer was not supposed to exist");
-        }catch(NoSuchElementException e){
+        }catch(Exception e){
             // there is no footer so the structural page call fails
         }
         Assertions.assertEquals(0, page.getVisibleTodos().size());

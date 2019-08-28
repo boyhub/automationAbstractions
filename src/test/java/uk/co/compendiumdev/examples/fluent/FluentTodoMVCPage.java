@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class FluentTodoMVCPage {
 
-    private static final By TODO_ITEMS = By.cssSelector("ul.todo-list li div.view");
+    private static final By TODO_ITEMS = By.cssSelector("ul.todo-list li:not(.hidden)");
 
     private final WebDriver driver;
     private final String url;
@@ -39,7 +39,7 @@ public class FluentTodoMVCPage {
     }
 
     public int countVisibleTodos(){
-        return driver.findElements(By.cssSelector("ul.todo-list li:not(.hidden)")).size();
+        return driver.findElements(TODO_ITEMS).size();
     }
 
     public String getToDoText(int itemIndex) {

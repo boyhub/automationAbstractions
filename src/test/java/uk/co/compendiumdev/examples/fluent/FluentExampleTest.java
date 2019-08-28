@@ -48,9 +48,9 @@ public class FluentExampleTest {
                                             and().countVisibleTodos());
 
         page.
-            deleteTodoItem(3).
+            deleteTodoItem(1).
             and().
-            editItem(2,"Edited Todo");
+            editItem(1,"Edited Todo");
 
         Assertions.assertEquals(2,page.countVisibleTodos());
     }

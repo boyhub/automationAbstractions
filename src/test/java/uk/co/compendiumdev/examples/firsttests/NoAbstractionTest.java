@@ -39,10 +39,10 @@ public class NoAbstractionTest {
         Assertions.assertTrue(driver.findElement(
                                 By.className("filters")).isDisplayed());
 
-        int newToDos = driver.findElements(
+        int newToDoCount = driver.findElements(
                                 By.cssSelector("ul.todo-list li")).size();
 
-        Assertions.assertTrue(newToDos > originalNumberOfTodos);
+        Assertions.assertTrue(newToDoCount > originalNumberOfTodos);
 
         driver.close();
         try {

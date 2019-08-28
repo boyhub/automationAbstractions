@@ -5,6 +5,7 @@ public class TodoMVCSite {
 
     public String getURL(){
         return "http://todomvc.com/examples/backbone/";
+        //return "http://todomvc.com/examples/vanillajs/";
         // local on mac via virtualHostX
         //return "http://todomvc.site/architecture-examples/backbone/";
         // local on pc
@@ -13,6 +14,7 @@ public class TodoMVCSite {
 
     public String getName(){
         return "backbone";
+        //return "vanillajs";
     }
 
 }

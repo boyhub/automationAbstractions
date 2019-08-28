@@ -42,7 +42,7 @@ public class ApplicationPageFunctionalExample {
         // then there are - items
         try{
             return structure.getCountInFooter();
-        }catch(NoSuchElementException e){
+        }catch(Exception e){
             return 0;
         }
     }

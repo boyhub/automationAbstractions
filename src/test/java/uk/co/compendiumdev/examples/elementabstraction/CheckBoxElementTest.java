@@ -71,6 +71,17 @@ public class CheckBoxElementTest {
 
     private int getCountOfCompletedItems(){
         return driver.findElements(By.cssSelector("ul.todo-list div.view input.toggle[checked]")).size();
+
+        // TODO:
+        //      EXERCISE:
+        //          The vanillajs implementation does not mark the checkbox
+        //          as checked, can you make this selector more universal
+        //          and apply to more implementations.
+        //          In vanillajs the li is given a class completed 'ul.todo-list li.completed'
+        //          look at other implementations, is there a more generic locator strategy that
+        //          would work for more implementations?
+        //          If so, change the code and run the tests on different browsers.
+        //          You may need to change other classes in the code to use your new selector strategy.
     }
 
     // TODO:

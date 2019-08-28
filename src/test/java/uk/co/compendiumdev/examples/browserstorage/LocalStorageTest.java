@@ -15,7 +15,6 @@ import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
 public class LocalStorageTest {
 
-
     private WebDriver driver;
     private TodoMVCSite todoMVCSite;
     private TodoMVCStoragePojoPage todoMVC;
@@ -115,4 +114,16 @@ public class LocalStorageTest {
 
         ExecutionDriver.closeDriver(driver);
     }
+
+    /*
+        TODO:
+            EXERCISE:
+                The different implementations of todomvc use different local storage implementations
+                Analyse a few of the implementations
+                How would you build an abstraction to handle multiple implementations?
+                    - would you create an interface?
+                    - would you have a Factory class?
+                Create an implementation for a different implementat e.g. vanillajs
+     */
+
 }

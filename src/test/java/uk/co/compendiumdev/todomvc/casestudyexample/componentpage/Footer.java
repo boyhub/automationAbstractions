@@ -35,7 +35,10 @@ public class Footer {
     }
 
     public boolean isVisible(){
-        return getFilters().size()>0;
+        if(getFilters().size()>0){
+            return getFilters().get(0).isDisplayed();
+        }
+        return false;
     }
 
     private void clickOnFilter(int filterIndex) {
