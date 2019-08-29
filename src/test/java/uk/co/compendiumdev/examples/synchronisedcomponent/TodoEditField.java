@@ -17,20 +17,6 @@ import java.time.Clock;
 
 ---
 
-# Loadable Component
-
-* Extends LoadableComponent
-    * Get
-        * If isLoaded, return this
-        * Else load()
-        * Check isLoaded()
-* Implement _load_
-    * _Add any synchronisation in **load** to wait for the loading. Exit only when 'loaded'._
-* Implement _isLoaded_
-    * _Check, and **throw Error** if not loaded_
-
----
-
 # SlowLoadable Component Example
 
 * Extends SlowLoadableComponent

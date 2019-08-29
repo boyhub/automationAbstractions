@@ -31,6 +31,7 @@ public class SynchronisedComponentPojoPage extends LoadableComponent {
     private final String url;
     private final WebDriverWait wait;
 
+
     public SynchronisedComponentPojoPage(WebDriver driver, String url) {
         this.driver = driver;
         this.url = url;
