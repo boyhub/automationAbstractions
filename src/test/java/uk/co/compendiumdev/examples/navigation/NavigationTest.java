@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import uk.co.compendiumdev.selenium.support.webdriver.ExecutionDriver;
 import uk.co.compendiumdev.todomvc.site.TodoMVCSite;
 
+import static uk.co.compendiumdev.examples.navigation.TodoMVCNav.Pages.ACTIVE_TODOS_PAGE;
+
 public class NavigationTest {
 
     private WebDriver driver;
@@ -223,7 +225,9 @@ public class NavigationTest {
 //        EXERCISE:
 //            - There is a TodoMVCNav object in this package.
 //            - Try and use that in a test and see if an enum based approach
-//              helps readability and maintenance.
+//              helps readability and maintenance
+//            - e.g. new TodoMVCNav(driver, todoMVCSite).open(ACTIVE_TODOS_PAGE);
+
 
     @AfterEach
     public void teardown(){

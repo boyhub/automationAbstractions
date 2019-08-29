@@ -76,10 +76,6 @@ public class HamcrestAssertionsTest {
 //              with more of the matchers listed at http://hamcrest.org
 
 
-    @Test
-    public void AssertJExample(){
-
-    }
 
     @AfterEach
     public void teardown(){

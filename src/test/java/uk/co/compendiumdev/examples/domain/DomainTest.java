@@ -75,6 +75,13 @@ public class DomainTest {
         }
     }
 
+    // TODO:
+    //    EXERCISE:
+    //       - create a polymorphic version of enterNewToDo which accepts a ToDoItem
+    //         as the parameter instead of a name
+    //       - create a createToDo method which accepts a ToDoItem
+    //         and creates it, and sets the 'completed' state based on the ToDoItem state
+
     @Test
     public void todoItemRandomDomainObjects(){
 
@@ -185,7 +192,7 @@ public class DomainTest {
 //    TODO:
 //        EXERCISE:
 //            - combine the TodoList and the User so that the User uses and maintains
-//              a todolist in its actions e.g. whena user creates a to do it adds it to the page
+//              a todolist in its actions e.g. when a user creates a to do it adds it to the page
 //              and keeps track of it in a todolist object. This user can then be used to model
 //              the expectations, as well as taking actions e.g. user.expectedNumberOfTodos(),
 //              user.countNumberOfTodos()
