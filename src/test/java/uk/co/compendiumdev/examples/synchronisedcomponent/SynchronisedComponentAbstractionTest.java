@@ -21,7 +21,8 @@ public class SynchronisedComponentAbstractionTest {
         final TodoMVCSite todoMVCSite = new TodoMVCSite();
 
         todoMVC = new SynchronisedComponentPojoPage(driver, todoMVCSite.getURL());
-        todoMVC.open();
+        // todoMVC.open()
+        todoMVC.get(); // use Loadable Component interface
 
     }
 

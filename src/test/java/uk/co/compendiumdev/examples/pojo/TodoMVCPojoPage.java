@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
+
 public class TodoMVCPojoPage {
 
     private static final By TODO_ITEMS = By.cssSelector("ul.todo-list li:not(.hidden)");
@@ -96,4 +97,17 @@ public class TodoMVCPojoPage {
     public boolean isFooterVisible() {
         return driver.findElements(By.cssSelector("ul.filters li a")).size()>0;
     }
+
+
+// TODO:
+//       EXERCISE:
+//             - are the methods on this page at a good level of abstraction?
+//                  - e.g. deleteToDoItem or enableDeleteButton , clickDeleteButton?
+//             - what levels could this model?
+//             - create a list of alternative methods that the page object could expose
+//             - should the methods you have identified all be on one page object, or would you have many?
+//             - if you would have many, then what would they be called?
+//             - write down your decisions for the existence of the objects you have identifed
+//             - implement some of the page objects you have identified and use them in tests
+
 }

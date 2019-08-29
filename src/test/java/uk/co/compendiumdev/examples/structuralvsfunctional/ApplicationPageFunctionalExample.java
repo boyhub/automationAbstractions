@@ -39,7 +39,7 @@ public class ApplicationPageFunctionalExample {
 
     public int getCountInFooter() {
         // if there is an exception because count is not visible
-        // then there are - items
+        // then there are 0 items
         try{
             return structure.getCountInFooter();
         }catch(Exception e){

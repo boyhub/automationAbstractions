@@ -3,17 +3,27 @@ package uk.co.compendiumdev.examples.synchronisedcomponent;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-/**
- * This is a copy of the TodoMVCPojoPage to keep the examples isolated
- * but the editItem has been amended to use a component
- * the component has in built synchronisation so that a 'get' will
- * wait until the component is ready to work with.
- */
-public class SynchronisedComponentPojoPage {
+/*
+ This is a copy of the TodoMVCPojoPage to keep the examples isolated
+ but the editItem has been amended to use a component
+ the component has in built synchronisation so that a 'get' will
+ wait until the component is ready to work with.
+
+ The page has been edited to 'be' a LoadableComponent which means it
+ inherits a 'get' method and we implement the methods to detect if
+ we are on the correct page or not.
+
+ LoadableComponent is not a synchronisation component, it is an assertion
+ approach and a common loading interface.
+
+ Slow Loadable Component is a synchronisation approach.
+*/
+public class SynchronisedComponentPojoPage extends LoadableComponent {
 
     private static final By TODO_ITEMS = By.cssSelector("ul.todo-list li div.view");
 
@@ -78,5 +88,25 @@ public class SynchronisedComponentPojoPage {
         editField.get();
         editField.edit(editTheTitleTo);
 
+    }
+
+    @Override
+    protected void load() {
+        open();
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        boolean loaded = false;
+        try{
+            if(driver.findElement(By.className("new-todo"))!=null){
+                loaded = true;
+            }
+        }catch (Exception e){
+
+        }
+        if(!loaded){
+            throw new Error("page not loaded");
+        }
     }
 }

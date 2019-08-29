@@ -104,6 +104,12 @@ public class CheckBoxElementTest {
     }
 
     // TODO:
+    //    EXERCISE
+    //      - add ability to pass in a By and a driver
+    //      - does this add more complexity?
+    //      - would you need to add synchronisation code?
+
+    // TODO:
     //       EXERCISE:
     //               The Selenium WebDriver classes have a Select class which is an element abstraction.
     //               Have a look at the source code for this and see if it gives you additional ideas

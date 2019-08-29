@@ -98,8 +98,6 @@ public class TodoMVCPageFactoryPage {
         List<WebElement> items = getTodoItems();
         WebElement todoListItem = items.get(itemIndex);
 
-        //wait.until(ExpectedConditions.elementToBeClickable(todoListItem));
-
         // used actions here because WebElement supports click only
         new Actions(driver).doubleClick(todoListItem).perform();
 

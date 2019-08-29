@@ -5,7 +5,49 @@ import org.openqa.selenium.support.ui.SlowLoadableComponent;
 
 import java.time.Clock;
 
-// This implementation uses the SlowLoadableComponent
+/*
+
+ This implementation uses the SlowLoadableComponent
+ SlowLoadableComponent offers the same interface as LoadableComponent
+ but the isLoaded is used for synchronisation i.e. wait until isLoaded
+ in LoadableComponent isLoaded is used as an 'assertion mechanism' to
+ make sure we are on the expected page
+
+ The sync and check is triggered by the inherited 'get' method
+
+---
+
+# Loadable Component
+
+* Extends LoadableComponent
+    * Get
+        * If isLoaded, return this
+        * Else load()
+        * Check isLoaded()
+* Implement _load_
+    * _Add any synchronisation in **load** to wait for the loading. Exit only when 'loaded'._
+* Implement _isLoaded_
+    * _Check, and **throw Error** if not loaded_
+
+---
+
+# SlowLoadable Component Example
+
+* Extends SlowLoadableComponent
+* Constructor has to additionally call
+    * super(new SystemClock(), 10);
+    * Where 10 is a timeout # of seconds
+* _**get()**_
+    * If isLoaded then return this Else load
+    * While not loaded{ wait for 200 millseconds}
+* Implement _**load**_ and _**isLoaded**_
+    * But can remove sync loops from load
+
+
+
+
+*/
+
 // TODO:
 //      EXERCISE:
 //              Make this simpler by not extending SlowLoadableComponent

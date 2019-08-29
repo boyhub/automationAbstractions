@@ -11,7 +11,6 @@ import java.util.List;
 
 public class ApplicationPageStructuralExample{
 
-    private static final By CLEAR_COMPLETED = By.id("clear-completed");
     private static final By VISIBLE_TODOS = By.cssSelector("ul.todo-list li:not(.hidden)");
 
     private final WebDriver driver;

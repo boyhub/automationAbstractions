@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.examples.drivercontrol;
+package uk.co.compendiumdev.examples.drivermanager;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;

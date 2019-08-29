@@ -1,4 +1,4 @@
-package uk.co.compendiumdev.examples.drivercontrol;
+package uk.co.compendiumdev.examples.drivermanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
