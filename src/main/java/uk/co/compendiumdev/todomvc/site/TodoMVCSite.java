@@ -4,9 +4,11 @@ package uk.co.compendiumdev.todomvc.site;
 public class TodoMVCSite {
 
     public String getURL(){
-        return "http://todomvc.com/examples/backbone/";
-        //return "http://todomvc.com/examples/vanillajs/";
+
+        //return "http://todomvc.com/examples/backbone/";
+        return "http://todomvc.com/examples/vanillajs/";
         //return "http://todomvc.com/examples/angularjs/";  // angular will require additional synchronisation
+        //return "https://compendiumdev.co.uk/apps/todo/todo.html"; //
     }
 
     public String getName(){

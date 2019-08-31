@@ -87,6 +87,9 @@ public class FluentTodoMVCPage {
 
         wait.until(ExpectedConditions.elementToBeClickable(todoListItem));
 
+        // double click on the label
+        todoListItem = todoListItem.findElement(By.tagName("label"));
+
         // used actions here because WebElement supports click only
         new Actions(driver).doubleClick(todoListItem).perform();
 

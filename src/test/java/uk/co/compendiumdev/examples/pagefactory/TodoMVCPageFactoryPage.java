@@ -98,6 +98,12 @@ public class TodoMVCPageFactoryPage {
         List<WebElement> items = getTodoItems();
         WebElement todoListItem = items.get(itemIndex);
 
+        // TODO:
+        //    EXERCISE:
+        //        Is this necessary to click on the label?
+        //        Is there another way to do it, and use an annotated field instead of a relative findElement for label?
+        // double click on the label
+        todoListItem = todoListItem.findElement(By.tagName("label"));
         // used actions here because WebElement supports click only
         new Actions(driver).doubleClick(todoListItem).perform();
 

@@ -122,6 +122,6 @@ public class LocalStorageTest {
 //            - How would you build an abstraction to handle multiple implementations?
 //                - would you create an interface?
 //                - would you have a Factory class?
-//            - Create an implementation for a different implementat e.g. vanillajs
+//            - Create an implementation for a different implementation e.g. vanillajs
 
 }
