@@ -229,6 +229,14 @@ public class NavigationTest {
 //            - e.g. new TodoMVCNav(driver, todoMVCSite).open(ACTIVE_TODOS_PAGE);
 
 
+    // TODO:
+    //      EXERCISE:
+    //          - the compendiumdev.co.uk/apps version of to do app has more functionality
+    //            and can be used for navigating between a list of todos and a management
+    //            section for managing todos
+    //            if you want to experiment with navigation then expand these tests to cover
+    //            the list management functionality - see the url in the TodoMVCSite class
+
     @AfterEach
     public void teardown(){
         ExecutionDriver.closeDriver(driver);

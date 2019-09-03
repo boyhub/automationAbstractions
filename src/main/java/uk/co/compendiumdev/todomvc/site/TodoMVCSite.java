@@ -5,10 +5,10 @@ public class TodoMVCSite {
 
     public String getURL(){
 
-        //return "http://todomvc.com/examples/backbone/";
-        return "http://todomvc.com/examples/vanillajs/";
+        return "http://todomvc.com/examples/backbone/";
+        //return "http://todomvc.com/examples/vanillajs/";
         //return "http://todomvc.com/examples/angularjs/";  // angular will require additional synchronisation
-        //return "https://compendiumdev.co.uk/apps/todo/todo.html"; //
+        // return "https://compendiumdev.co.uk/apps/todo/todo.html"; // custom version with list management
     }
 
     public String getName(){
@@ -38,4 +38,9 @@ public class TodoMVCSite {
     //     EXERCISE:
     //          - make switching the environment possible via System Properties or Environment Variables
 
+    // TODO:
+    //     EXERCISE:
+    //          - automate the list management page of the implementation at compendiumdev.co.uk/apps (see url in comments above)
+    //          - the existing test code should run against the compendiumdev page
+    //          - you will also be able to experiment with navigation approaches that load different pages
 }
