@@ -1,0 +1,10 @@
+dist: trusty
+addons:
+  chrome: stable
+language: java
+script: mvn test
+jdk:
+  - oraclejdk11
+  - openjdk8
+  - openjdk10
+  - openjdk11
