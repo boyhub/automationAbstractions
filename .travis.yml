@@ -6,10 +6,15 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
   --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+install:
+  # hacking in stuff from seleniumhq https://github.com/SeleniumHQ/selenium/blob/master/.travis.yml
+  - export CHROMEDRIVER_VERSION=`curl -s http://chromedriver.storage.googleapis.com/LATEST_RELEASE`
+  - curl -L -O "http://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+  - unzip chromedriver_linux64.zip && chmod +x chromedriver && sudo mv chromedriver /usr/local/bin
 language: java
 script: mvn test
 jdk:
-  - oraclejdk11
+#  - oraclejdk11
   - openjdk8
-  - openjdk10
-  - openjdk11
+#  - openjdk10
+#  - openjdk11
