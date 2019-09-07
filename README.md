@@ -12,7 +12,11 @@ Copyright Compendium Developments Ltd 2014-2019, Licenced under MIT License for 
 
 [Contact Alan Richardson](https://eviltester.com/contact) if you would like inhouse training for this material https://eviltester.com/contact
 
-------
+---
+
+[![Build Status](https://travis-ci.org/eviltester/automationAbstractions.svg?branch=master)](https://travis-ci.org/eviltester/automationAbstractions)
+
+---
 
 Alan Richardson
 
