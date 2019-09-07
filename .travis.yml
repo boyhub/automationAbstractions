@@ -1,6 +1,9 @@
 dist: trusty
 addons:
   chrome: stable
+before_install:
+  - # https://docs.travis-ci.com/user/gui-and-headless-browsers/
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 language: java
 script: mvn test
 jdk:
