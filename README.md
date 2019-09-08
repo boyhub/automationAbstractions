@@ -41,4 +41,6 @@ Alan Richardson
     * https://www.youtube.com/watch?v=ugAlCZBMOvM
 * John Smart/Jan Molak - ScreenPlay: the next stage in automated acceptance testing
     * https://www.youtube.com/watch?v=4eODK3WS6cM
+* Titus Fortner - Page Objects: You're Doing It Wrong
+    * https://www.youtube.com/watch?v=oeWfQQObsxI    
     

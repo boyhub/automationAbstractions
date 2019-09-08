@@ -1,6 +1,8 @@
 MIT License
 
-Copyright (c) [2014] [Compendium Developments Ltd]
+Covering the Workshop Source code pom.xml and src folder
+
+Copyright (c) [2019] [Compendium Developments Ltd]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
