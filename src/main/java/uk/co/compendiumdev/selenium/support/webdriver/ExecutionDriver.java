@@ -2,8 +2,7 @@ package uk.co.compendiumdev.selenium.support.webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import uk.co.compendiumdev.selenium.support.webdriver.workarounds.WebDriverStarter;
 
 /**
  * Class to abstract the creation of the driver to make it easier to
@@ -46,10 +45,33 @@ public class ExecutionDriver {
      */
     public WebDriver getUncached(){
 
+
+
         return new ChromeDriver();
         //return new FirefoxDriver();
         //return new SafariDriver();
+
+        /*
+            Some environments and laptops are locked down making
+            webdriver manager fail to work.
+
+            Under those circumstances use the line below instead of
+
+            return new ChromeDriver();
+
+            But amend the .get method to match your environment
+            requirements.
+
+            See the documentation in the WebDriverStarter class.
+
+            You should also search the code for any other instances
+            of new ChromeDriver or new FirefoxDriver and replace
+            them with the line below.
+         */
+        //return new WebDriverStarter().get();
     }
+
+
 
     /*
         A convenience method to make it easier to close
