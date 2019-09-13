@@ -1,4 +1,5 @@
-dist: trusty
+dist: xenial
+# switched to xenial to see if it fixes chrome versioning https://travis-ci.community/t/travis-is-downloading-older-chrome-versions-in-place-of-chrome-stable/5040/2
 addons:
   chrome: stable
 before_install:
