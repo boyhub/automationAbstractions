@@ -2,13 +2,16 @@ dist: xenial
 # switched to xenial to see if it fixes chrome versioning https://travis-ci.community/t/travis-is-downloading-older-chrome-versions-in-place-of-chrome-stable/5040/2
 addons:
   chrome: stable
+# changes for xvfb required for xenial as per https://docs.travis-ci.com/user/gui-and-headless-browsers/
+services:
+  - xvfb
 before_install:
 # official travis docs on gui and headless browsers https://docs.travis-ci.com/user/gui-and-headless-browsers/
 # this config from webdriver manager .travis.yml https://github.com/SergeyPirogov/webdriver_manager/blob/master/.travis.yml
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
-  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+#  - export DISPLAY=:99.0
+#  - sh -e /etc/init.d/xvfb start
+#  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
+#  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 install:
   # hacking in stuff from seleniumhq https://github.com/SeleniumHQ/selenium/blob/master/.travis.yml
   #                                  https://github.com/SeleniumHQ/selenium/blob/master/scripts/travis/install.sh
@@ -16,7 +19,7 @@ install:
   - curl -L -O "http://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
   - unzip chromedriver_linux64.zip && chmod +x chromedriver && sudo mv chromedriver /usr/local/bin
 language: java
-script: mvn test
+script: xvfb-run --server-args="-screen 0 1024x768x24" mvn test
 jdk:
   - oraclejdk11
   - openjdk8
