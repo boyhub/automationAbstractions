@@ -19,9 +19,10 @@ install:
   - curl -L -O "http://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
   - unzip chromedriver_linux64.zip && chmod +x chromedriver && sudo mv chromedriver /usr/local/bin
 language: java
+# 20190913 xvfb issues debugged using https://stackoverflow.com/questions/16726227/xvfb-failed-start-error
 script: xvfb-run -e /dev/stdout --auto-servernum --server-args="-screen 0 1024x768x24" mvn test
 jdk:
   - oraclejdk11
-#  - openjdk8
-#  - openjdk10
-#  - openjdk11
+  - openjdk8
+  - openjdk10
+  - openjdk11
