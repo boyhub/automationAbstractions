@@ -22,8 +22,20 @@ public class RandomTodoGenerator {
 
     }
 
+    // TODO:
+    //     EXERCISE:
+    //         - users have reported that when the hamlet quote has a ' in it, that
+    //           the test fails to assert correctly. re-enable the ' and investigate
+    //           the cause of this defect and fix it if possible
     public String getRandomTodoName() {
         String todo = faker.shakespeare().hamletQuote();
+        todo = todo.replace(":","").
+                    replace(".","").
+                    replace("'","").
+                    replace("!","").
+                    replace("?","").
+                    replace(",","").
+                    replace(";","");
         if(todo.length()>50)
             todo = todo.substring(1, 50);
 

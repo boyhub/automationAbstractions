@@ -104,6 +104,19 @@ public class DomainTest {
                     todoMVC.getToDoText(index));
         }
     }
+
+    // TODO:
+    //      EXERCISE:
+    //          - the domain objects and random data generation should really have unit tests
+    //            create as many classes and tests as you need to convince yourself that
+    //            the domain objects and random data generation code is good enough
+//    @Test
+//    public void itemsOutputTest(){
+//        for(int x=0; x<100;x++){
+//            System.out.println(new RandomTodoGenerator().getRandomTodoName());
+//        }
+//    }
+
     /*
         We might want to create high level 'actors' which model users or other
         systems in the domain.
